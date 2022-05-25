@@ -13,10 +13,16 @@ struct ContentView: View {
     @State private var numberOfPeople = 2
     @State private var tipsPercent = 20
     @FocusState private var amountIsFocused: Bool
+    
+    let defaultCurrency: FloatingPointFormatStyle<Double>.Currency = .currency(code: Locale.current.currencyCode ?? "USD")
    
     let possibleTips = [20, 25, 15, 10, 0]
     
     private var total: Double {
+        checkAmount * (Double(tipsPercent)/100 + 1)
+    }
+    
+    private var totalForEachOne: Double {
         (checkAmount / Double(numberOfPeople) * (Double(tipsPercent)/100 + 1))
     }
     
@@ -24,7 +30,7 @@ struct ContentView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    TextField("Amount", value: $checkAmount, format: defaultCurrency)
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
                     
@@ -49,16 +55,23 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    Text(total, format: .currency(code: Locale.current.currencyCode ?? "USD"))
+                    Text(total, format: defaultCurrency)
                 } header: {
-                    Text("Each of you have to pay")
+                    Text("Total with tips")
+                }
+                
+                Section {
+                    Text(totalForEachOne, format: defaultCurrency)
+                } header: {
+                    Text("Amount per person")
                 }
             }
+            
             .navigationTitle("Split the bill")
             .toolbar {
                 ToolbarItemGroup (placement: .keyboard) {
                     Spacer()
-                    Button("Done") {
+                    Button("Hide") {
                     amountIsFocused = false
                     }
                 }
