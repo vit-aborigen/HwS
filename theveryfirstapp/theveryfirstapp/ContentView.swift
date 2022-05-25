@@ -16,7 +16,7 @@ struct ContentView: View {
     
     let defaultCurrency: FloatingPointFormatStyle<Double>.Currency = .currency(code: Locale.current.currencyCode ?? "USD")
    
-    let possibleTips = [20, 25, 15, 10, 0]
+    let possibleTips = [10, 20, 25, 15, 0]
     
     private var total: Double {
         checkAmount * (Double(tipsPercent)/100 + 1)
@@ -35,8 +35,8 @@ struct ContentView: View {
                         .focused($amountIsFocused)
                     
                     Picker("Number of people", selection: $numberOfPeople) {
-                        ForEach (2..<100, id: \.self) {
-                            Text("\($0) people")
+                        ForEach (2..<100) {
+                            Text("\($0)") .tag($0)
                         }
                     }
                 } header: {
@@ -50,6 +50,7 @@ struct ContentView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+
                 } header: {
                      Text("How much tip do you want to leave")
                 }
