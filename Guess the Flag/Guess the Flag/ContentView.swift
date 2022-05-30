@@ -7,6 +7,32 @@
 
 import SwiftUI
 
+struct MakeHeaderLargeAndWhite: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle.bold())
+            .foregroundColor(.white)
+    }
+}
+
+extension View {
+    func increaseHeader() -> some View {
+        modifier(MakeHeaderLargeAndWhite)
+    }
+}
+
+struct FlagImage: View {
+    var countryName: String
+    
+    var body: some View {
+        Image(countryName)
+            .renderingMode(.original)
+            .clipShape(Capsule(style: .continuous))
+            .shadow(radius: 5)
+    }
+}
+
 struct ContentView: View {
     
     @State private var showingScore = false
@@ -22,17 +48,16 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            RadialGradient(stops: [.init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
+           RadialGradient(stops: [.init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
                                    .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.3)],
                            center: .top, startRadius: 200, endRadius: 700)
             .ignoresSafeArea()
-            
+
             VStack {
                 Spacer()
                 
                 Text("Guess the flag")
-                    .font(.largeTitle.bold())
-                    .foregroundColor(.white)
+                    .increaseHeader()
                 
                 VStack (spacing: 15) {
                     VStack {
@@ -48,10 +73,7 @@ struct ContentView: View {
                         Button {
                             flagTapped(number)
                         } label: {
-                            Image(countries[number])
-                                .renderingMode(.original)
-                                .clipShape(Capsule(style: .continuous))
-                                .shadow(radius: 5)
+                            FlagImage(countryName: countries[number])
                         }
                     }
                 }
@@ -63,12 +85,10 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Your score is \(score)")
-                    .font(.largeTitle.bold())
-                    .foregroundColor(.white)
+                    .increaseHeader()
                 
                 Text("Turns left \(maxTurns - currentTurn)")
-                    .font(.largeTitle.bold())
-                    .foregroundColor(.white)
+                    .increaseHeader()
                 
             }
             .padding()
