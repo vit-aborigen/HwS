@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var wakeUp = defaultWakeUpTime
     @State private var sleepAmount = 8.0
     @State private var cupsOfCoffee = 1
+    @State private var customValue = 1
     
     @State private var alertTitle = ""
     @State private var alertMessage = ""
@@ -24,6 +25,28 @@ struct ContentView: View {
         return Calendar.current.date(from: newComponent) ?? Date.now
     }
     
+    var autoCalcBedTime: String {
+        do {
+            let config = MLModelConfiguration()
+            let model = try SleepCalculator(configuration: config)
+            let component = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
+            
+            let hour = (component.hour ?? 0) * 60 * 60
+            let minutes = (component.minute ?? 0) * 60
+            
+            let prediction = try model.prediction(wake: Double(hour + minutes), estimatedSleep: sleepAmount, coffee: Double(cupsOfCoffee))
+            
+            let sleeptime = wakeUp - prediction.actualSleep
+            
+            return sleeptime.formatted(date: .omitted, time: .shortened)
+            
+        } catch {
+            alertTitle = "Error"
+            alertMessage = "Something went wrong when loading ML model"
+            return alertTitle + alertMessage
+        }
+    }
+    
     var body: some View {
         NavigationView {
             Form {
@@ -33,8 +56,8 @@ struct ContentView: View {
                     
                     DatePicker("", selection: $wakeUp, displayedComponents: .hourAndMinute)
                         .labelsHidden()
-                    
                 }
+                
                 VStack (alignment: .leading, spacing: 0) {
                     Text("How much do you want to sleep?")
                         .font(.headline)
@@ -42,11 +65,21 @@ struct ContentView: View {
                     Stepper("\(sleepAmount.formatted(.number)) hours", value: $sleepAmount, in: 4...12, step: 0.25)
                 }
                 
-                VStack (alignment: .leading, spacing: 0) {
+                Section {
+                    Picker(cupsOfCoffee == 1 ? "Cup" : "Cups" , selection: $cupsOfCoffee) {
+                        ForEach (1...10, id: \.self) {
+                            Text("\($0)")
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                } header: {
                     Text("How much coffee do you drink?")
-                        .font(.headline)
-                    
-                    Stepper(cupsOfCoffee == 1 ? "1 cup" : "\(cupsOfCoffee) cups", value: $cupsOfCoffee, in: 1...20)
+                }
+                
+                Section {
+                    Text("\(autoCalcBedTime)")
+                } header: {
+                    Text("Your recommended bed time is")
                 }
             }
             .navigationTitle("Better Rest")
@@ -55,13 +88,13 @@ struct ContentView: View {
                     Image(systemName: "cup.and.saucer.fill")
                 }
             }
+            
         }
         .alert("\(alertTitle)", isPresented: $alertShow) {
             Button("OK") {  }
         } message: {
             Text("\(alertMessage)")
         }
-        
     }
                     
     
