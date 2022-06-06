@@ -41,16 +41,6 @@ struct ContentView: View {
                 }
                 
                 Section {
-                    HStack {
-                        Spacer()
-                        Text("Your score:")
-                        Text("\(score)")
-                        Spacer()
-                    }
-                    .font(.title)
-                }
-                
-                Section {
                     ForEach(myVM.userWords, id: \.self) { word in
                         HStack {
                             Image(systemName: "\(word.count).circle")
@@ -62,6 +52,14 @@ struct ContentView: View {
             .navigationTitle(myVM.rootWord)
             .toolbar {
                 Button("Restart", action: myVM.pickANewWord)
+            }
+            .safeAreaInset(edge: .bottom) {
+                Text("Score: \(score)")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(.blue)
+                    .foregroundColor(.white)
+                    .font(.title)
             }
         }
         .onAppear(perform: myVM.pickANewWord)
