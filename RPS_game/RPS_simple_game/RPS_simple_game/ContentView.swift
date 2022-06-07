@@ -15,11 +15,13 @@ struct ImagesForButtons: View {
     }
 }
 
+
+
 struct ContentView: View {
-    let possibleOutput = ["Win", "Lose"]
+    @StateObject var gameHelper = Helper(amountOfTurns: 10)
+    
     let winners = ["Rock": "Scissors" , "Paper": "Rock", "Scissors": "Paper"]
     let figures = ["Rock", "Paper", "Scissors"]
-    let maxTurns = 10
     
     @State private var currentTurn: Int = 0
     @State private var score: Int = 0
@@ -28,7 +30,7 @@ struct ContentView: View {
     @State private var animatedGradient = false
     @State private var gameIsOver = false
     
-    @State var gameResult: Int = Int.random(in: 0..<2)
+    @State var gameResult: PossibleOutput = PossibleOutput.allCases.randomElement()!
     @State var opponent: Int = Int.random(in: 0..<3)
     
     var body: some View {
@@ -48,7 +50,7 @@ struct ContentView: View {
                 Section {
                     Text("You should")
                         .font(.largeTitle)
-                    Text(possibleOutput[gameResult].uppercased())
+                    Text(gameResult.rawValue)
                         .font(.largeTitle.bold())
                     Text("vs")
                     Image(figures[opponent])
@@ -61,8 +63,8 @@ struct ContentView: View {
                 HStack {
                     ForEach (0..<3) { number in
                         Button {
-                            result = checkAnswer(userPicked: number)
-                            gameResult = Int.random(in: 0..<2)
+                            result = proceedUserPick(userPicked: number)
+                            gameResult = PossibleOutput.allCases.randomElement()!
                             opponent = Int.random(in: 0..<3)
                         } label: {
                             Image(figures[number])
@@ -85,7 +87,7 @@ struct ContentView: View {
                 .font(.largeTitle)
                 
                 HStack {
-                    Text("\(maxTurns - currentTurn)")
+                    Text("\(gameHelper.maxTurns - currentTurn)")
                         .font(.largeTitle.bold())
                     Text(" turns left")
                         .font(.largeTitle)
@@ -104,20 +106,20 @@ struct ContentView: View {
         currentTurn = 0
         score = 0
         gameIsOver = false
-        gameResult = Int.random(in: 0..<2)
+        gameResult = PossibleOutput.allCases.randomElement()!
         opponent = Int.random(in: 0..<3)
     }
     
-    func checkAnswer(userPicked number: Int) -> Bool {
+    func proceedUserPick(userPicked number: Int) -> Bool {
         currentTurn += 1
         
-        if currentTurn == maxTurns {
+        if currentTurn == gameHelper.maxTurns {
             gameIsOver = true
         }
         
         let userPick = figures[number]
         let choiseToWin = winners[figures[opponent]]
-        let desiredOutcome = possibleOutput[gameResult]
+        let desiredOutcome = gameResult.rawValue
         
         if (desiredOutcome == "Win") && (userPick != choiseToWin) && (userPick != figures[opponent])  {
             score += 1

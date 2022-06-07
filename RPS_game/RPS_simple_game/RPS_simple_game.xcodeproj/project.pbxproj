@@ -11,6 +11,7 @@
 		9F1D70CE2846377B00C47540 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1D70CD2846377B00C47540 /* ContentView.swift */; };
 		9F1D70D02846377C00C47540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D70CF2846377C00C47540 /* Assets.xcassets */; };
 		9F1D70D32846377C00C47540 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F1D70D22846377C00C47540 /* Preview Assets.xcassets */; };
+		9F7B2271284FDDBC0026E00C /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B2270284FDDBC0026E00C /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		9F1D70CD2846377B00C47540 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F1D70CF2846377C00C47540 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F1D70D22846377C00C47540 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9F7B2270284FDDBC0026E00C /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				9F1D70CB2846377B00C47540 /* RPS_simple_gameApp.swift */,
+				9F7B2270284FDDBC0026E00C /* GameViewModel.swift */,
 				9F1D70CD2846377B00C47540 /* ContentView.swift */,
 				9F1D70CF2846377C00C47540 /* Assets.xcassets */,
 				9F1D70D12846377C00C47540 /* Preview Content */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F7B2271284FDDBC0026E00C /* GameViewModel.swift in Sources */,
 				9F1D70CE2846377B00C47540 /* ContentView.swift in Sources */,
 				9F1D70CC2846377B00C47540 /* RPS_simple_gameApp.swift in Sources */,
 			);
