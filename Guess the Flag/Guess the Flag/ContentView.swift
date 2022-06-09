@@ -16,11 +16,36 @@ struct MakeHeaderLargeAndWhite: ViewModifier {
     }
 }
 
-extension View {
-    func increaseHeader() -> some View {
-        modifier(MakeHeaderLargeAndWhite)
+struct MarkIncorrectFlags: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .opacity(0.25)
+            .scaleEffect(0.6)
     }
 }
+
+struct MarkCorrectFlag: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .scaleEffect(1.5)
+            .rotation3DEffect(Angle(degrees: 360.0), axis: (x: 0, y: 1, z: 0))
+    }
+}
+
+extension View {
+    func increaseHeader() -> some View {
+        modifier(MakeHeaderLargeAndWhite())
+    }
+    
+    func shrinkFlag() -> some View {
+        modifier(MarkIncorrectFlags())
+    }
+    
+    func correctAnswer() -> some View {
+        modifier(MarkCorrectFlag())
+    }
+}
+
 
 struct FlagImage: View {
     var countryName: String
@@ -45,6 +70,7 @@ struct ContentView: View {
     
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer: Int = Int.random(in: 0...2)
+    @State private var userFlag = -1
     
     var body: some View {
         ZStack {
@@ -69,11 +95,14 @@ struct ContentView: View {
                             .font(.largeTitle.weight(.semibold))
                     }
                     
-                    ForEach(0..<3) { number in
+                    ForEach(0..<3, id: \.self) { number in
                         Button {
                             flagTapped(number)
                         } label: {
                             FlagImage(countryName: countries[number])
+                                .rotation3DEffect(Angle(degrees: userFlag == number ? 360.0 : 0), axis: (x: 0, y: 1, z: 0))
+                                .opacity(userFlag == -1 || userFlag == number ? 1 : 0.25)
+                                .animation(.interpolatingSpring(stiffness: 25, damping: 40), value: userFlag)
                         }
                     }
                 }
@@ -81,6 +110,7 @@ struct ContentView: View {
                 .padding(.vertical, 20)
                 .background(.regularMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 20))
+
                 
                 Spacer()
                 
@@ -107,6 +137,8 @@ struct ContentView: View {
     }
         
     func flagTapped (_ number: Int) {
+        userFlag = number
+        
         if number == correctAnswer {
             scoreTitle = "Correct"
             score += 1
@@ -114,7 +146,7 @@ struct ContentView: View {
             scoreTitle = "Wrong. That's the flag of \(countries[number])"
             score -= 1
         }
-        currentTurn += 1
+            currentTurn += 1
         
         if currentTurn == maxTurns {
             gameIsOver = true
@@ -127,6 +159,7 @@ struct ContentView: View {
     func askQuestion() {
         countries = countries.shuffled()
         correctAnswer = Int.random(in: 0...2)
+        userFlag = -1
     }
     
     func startNewGame() {
