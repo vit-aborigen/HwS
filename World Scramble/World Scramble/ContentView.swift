@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    enum currentFocus: Hashable {
+    enum currentFocus {
         case inputNewWordField
     }
     
@@ -47,6 +47,7 @@ struct ContentView: View {
                             Text("\(word)")
                         }
                     }
+                    
                 }
             }
             .navigationTitle(myVM.rootWord)
