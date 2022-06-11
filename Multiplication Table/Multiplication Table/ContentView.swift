@@ -21,10 +21,16 @@ struct ContentView: View {
                     Text("Question 1")
                         .font(.title.bold())
                     
-                    MathOperatorsView()
+                    MathOperatorsView(leftValue: $question.leftDigit, rightValue: $question.rightDigit, mathOpeator: $question.action)
                     
                     Spacer()
                 }
+            }
+            .toolbar {
+                Button("Restart") {
+                    // 2do some restart stuff later
+                }
+                .foregroundColor(.black)
             }
         }
     }

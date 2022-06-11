@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum MathOperator: String, CaseIterable {
     
@@ -16,29 +17,26 @@ enum MathOperator: String, CaseIterable {
 }
 
 class Question: ObservableObject {
-    var leftDigit: Int = 2
-    var rightDigit: Int = 2
-    var action: MathOperator = MathOperator.plus
+    @Published var leftDigit: Int = 2
+    @Published var rightDigit: Int = 2
+    @Published var action: MathOperator = MathOperator.plus
     
-    private func doMath(lhs: Int, rhs: Int) -> Int {
-        switch action {
+    func doMath() -> Int {
+        switch self.action {
         case .plus:
-            return lhs + rhs
+            return leftDigit + rightDigit
         case .minus:
-            return lhs - rhs
+            return leftDigit - rightDigit
         case .multiply:
-            return lhs * rhs
+            return leftDigit * rightDigit
         case .divide:
-            return lhs / rhs
+            return leftDigit / rightDigit
         }
     }
     
     var correctAnswer: Int {
         get {
-            return doMath(lhs: leftDigit, rhs: rightDigit)
+            return doMath()
         }
     }
-    
-    
-    
 }
