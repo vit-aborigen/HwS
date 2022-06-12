@@ -25,7 +25,7 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    AnswerBlockView(correctAnswer: question.correctAnswer)
+                    CardView(correctAnswer: question.correctAnswer)
                     
                     Spacer()
                 }
