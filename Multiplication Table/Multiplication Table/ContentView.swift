@@ -24,11 +24,17 @@ struct ContentView: View {
                     MathOperatorsView(leftValue: $question.leftDigit, rightValue: $question.rightDigit, mathOpeator: $question.action)
                     
                     Spacer()
+                    
+                    AnswerBlockView(correctAnswer: question.correctAnswer)
+                    
+                    Spacer()
                 }
             }
             .toolbar {
-                Button("Restart") {
-                    // 2do some restart stuff later
+                Button("New question") {
+                    withAnimation {
+                        question.newRandomQuestion()
+                    }
                 }
                 .foregroundColor(.black)
             }

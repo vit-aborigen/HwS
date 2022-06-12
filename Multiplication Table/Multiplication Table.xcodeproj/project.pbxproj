@@ -14,6 +14,7 @@
 		9FE860922853782800FD0F7D /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE860912853782800FD0F7D /* Questions.swift */; };
 		9FE860942853C19B00FD0F7D /* MathOpeatorsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE860932853C19B00FD0F7D /* MathOpeatorsView.swift */; };
 		9FE860962853C55F00FD0F7D /* View extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE860952853C55F00FD0F7D /* View extensions.swift */; };
+		9FE86098285600BC00FD0F7D /* AnswerBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE86097285600BC00FD0F7D /* AnswerBlockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		9FE860912853782800FD0F7D /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		9FE860932853C19B00FD0F7D /* MathOpeatorsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathOpeatorsView.swift; sourceTree = "<group>"; };
 		9FE860952853C55F00FD0F7D /* View extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View extensions.swift"; sourceTree = "<group>"; };
+		9FE86097285600BC00FD0F7D /* AnswerBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBlockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				9FE86049285376A800FD0F7D /* ContentView.swift */,
 				9FE860912853782800FD0F7D /* Questions.swift */,
 				9FE860932853C19B00FD0F7D /* MathOpeatorsView.swift */,
+				9FE86097285600BC00FD0F7D /* AnswerBlockView.swift */,
 				9FE860952853C55F00FD0F7D /* View extensions.swift */,
 				9FE8604B285376AD00FD0F7D /* Assets.xcassets */,
 				9FE8604D285376AD00FD0F7D /* Preview Content */,
@@ -148,6 +151,7 @@
 			files = (
 				9FE860922853782800FD0F7D /* Questions.swift in Sources */,
 				9FE8604A285376A800FD0F7D /* ContentView.swift in Sources */,
+				9FE86098285600BC00FD0F7D /* AnswerBlockView.swift in Sources */,
 				9FE860962853C55F00FD0F7D /* View extensions.swift in Sources */,
 				9FE86048285376A800FD0F7D /* Multiplication_TableApp.swift in Sources */,
 				9FE860942853C19B00FD0F7D /* MathOpeatorsView.swift in Sources */,

@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 struct MathOperatorsView: View {
-    @State var leftValue: Int = 2
-    @State var rightValue: Int = 2
-    @State var mathOpeator: String = "+"
+    @Binding var leftValue: Int
+    @Binding var rightValue: Int
+    @Binding var mathOpeator: MathOperator
     
     var body: some View {
         VStack {

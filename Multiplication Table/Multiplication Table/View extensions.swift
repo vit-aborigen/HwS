@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-extension UIPickerView {   open override var intrinsicContentSize: CGSize {     return CGSize(width: UIView.noIntrinsicMetric , height: 150)   } }
+extension UIPickerView {
+    open override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIView.noIntrinsicMetric , height: 150)
+    }
+}
 
 struct ImprovedPicker: ViewModifier {
     func body(content: Content) -> some View {

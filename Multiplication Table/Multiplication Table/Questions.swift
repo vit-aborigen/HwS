@@ -21,6 +21,12 @@ class Question: ObservableObject {
     @Published var rightDigit: Int = 2
     @Published var action: MathOperator = MathOperator.plus
     
+    func newRandomQuestion() {
+        leftDigit = Int.random(in: 2...10)
+        rightDigit = Int.random(in: 2...10)
+        action = MathOperator.allCases.randomElement() ?? .plus
+    }
+    
     func doMath() -> Int {
         switch self.action {
         case .plus:
