@@ -16,8 +16,6 @@ struct AddView: View {
     @State private var type = ExpenseTypes.personal
     @State private var amount = 0.0
     
-    let userCurrency: FloatingPointFormatStyle<Double>.Currency = .currency(code: Locale.current.currencyCode ?? "USD")
-    
     var body: some View {
         NavigationView {
             Form {
@@ -31,7 +29,7 @@ struct AddView: View {
                 }
                 .pickerStyle(.segmented)
                 
-                TextField("Amount", value: $amount, format: userCurrency)
+                TextField("Amount", value: $amount, format: .localCurrency)
                     .keyboardType(.decimalPad)
                 
             }

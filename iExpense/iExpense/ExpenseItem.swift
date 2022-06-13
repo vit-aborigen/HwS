@@ -6,7 +6,7 @@ enum ExpenseTypes: String, CaseIterable, Codable {
     case business = "Business"
 }
 
-struct ExpenseItem: Identifiable, Codable {
+struct ExpenseItem: Identifiable, Codable, Equatable {
     var id = UUID()
     let name: String
     let type: ExpenseTypes
