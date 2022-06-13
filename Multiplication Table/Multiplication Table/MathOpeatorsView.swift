@@ -23,6 +23,8 @@ struct MathOperatorsView: View {
                 }
                 .improveForMath()
                 
+                Laz
+                
                 Picker("Math operation", selection: $mathOpeator) {
                     ForEach(MathOperator.allCases, id: \.self) {
                         Text("\($0.rawValue)")

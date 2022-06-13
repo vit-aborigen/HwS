@@ -18,7 +18,7 @@ struct ImprovedPicker: ViewModifier {
         content
             .labelsHidden()
             .pickerStyle(.wheel)
-            .frame(width: 40)
+            .frame(minWidth: 40, idealWidth: 40, maxWidth: 70, alignment: .bottomTrailing)
             .clipped()
     }
 }
