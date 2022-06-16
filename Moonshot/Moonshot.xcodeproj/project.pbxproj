@@ -19,6 +19,8 @@
 		9FBE2706285A4D8B000D6506 /* Color-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE2705285A4D8B000D6506 /* Color-extension.swift */; };
 		9FBE2708285A551C000D6506 /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE2707285A551C000D6506 /* MissionView.swift */; };
 		9FBE270A285B5387000D6506 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE2709285B5387000D6506 /* AstronautView.swift */; };
+		9FBE270C285B5A59000D6506 /* Missions-AstronautsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE270B285B5A59000D6506 /* Missions-AstronautsView.swift */; };
+		9FBE270E285B5D07000D6506 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE270D285B5D07000D6506 /* DividerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		9FBE2705285A4D8B000D6506 /* Color-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-extension.swift"; sourceTree = "<group>"; };
 		9FBE2707285A551C000D6506 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
 		9FBE2709285B5387000D6506 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
+		9FBE270B285B5A59000D6506 /* Missions-AstronautsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Missions-AstronautsView.swift"; sourceTree = "<group>"; };
+		9FBE270D285B5D07000D6506 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				9FBE2707285A551C000D6506 /* MissionView.swift */,
+				9FBE270B285B5A59000D6506 /* Missions-AstronautsView.swift */,
+				9FBE270D285B5D07000D6506 /* DividerView.swift */,
 				9FBE2709285B5387000D6506 /* AstronautView.swift */,
 			);
 			path = Views;
@@ -195,6 +201,8 @@
 				9FBE26E9285897FF000D6506 /* MoonshotApp.swift in Sources */,
 				9FBE27042859DDAE000D6506 /* Bundle-Decodable.swift in Sources */,
 				9FBE27022859D43E000D6506 /* Mission.swift in Sources */,
+				9FBE270E285B5D07000D6506 /* DividerView.swift in Sources */,
+				9FBE270C285B5A59000D6506 /* Missions-AstronautsView.swift in Sources */,
 				9FBE26FF2859BE20000D6506 /* Astrounaut.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
