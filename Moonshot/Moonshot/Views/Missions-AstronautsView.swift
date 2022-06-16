@@ -43,13 +43,3 @@ struct Missions_AstronautsView: View {
         }
     }
 }
-
-/*
-struct Missions_AstronautsView_Previews: PreviewProvider {
-    static var previews: some View {
-        let missions: [Mission] = Bundle.main.decode(file: "missions.json")
-        
-        Missions_AstronautsView(crew: missions[0].crew[0])
-    }
-}
-*/
