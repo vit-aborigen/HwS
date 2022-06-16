@@ -17,6 +17,8 @@
 		9FBE27022859D43E000D6506 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE27012859D43E000D6506 /* Mission.swift */; };
 		9FBE27042859DDAE000D6506 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE27032859DDAE000D6506 /* Bundle-Decodable.swift */; };
 		9FBE2706285A4D8B000D6506 /* Color-extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE2705285A4D8B000D6506 /* Color-extension.swift */; };
+		9FBE2708285A551C000D6506 /* MissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE2707285A551C000D6506 /* MissionView.swift */; };
+		9FBE270A285B5387000D6506 /* AstronautView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE2709285B5387000D6506 /* AstronautView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		9FBE27012859D43E000D6506 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		9FBE27032859DDAE000D6506 /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		9FBE2705285A4D8B000D6506 /* Color-extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color-extension.swift"; sourceTree = "<group>"; };
+		9FBE2707285A551C000D6506 /* MissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionView.swift; sourceTree = "<group>"; };
+		9FBE2709285B5387000D6506 /* AstronautView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstronautView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,8 @@
 		9FBE26F628589C47000D6506 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9FBE2707285A551C000D6506 /* MissionView.swift */,
+				9FBE2709285B5387000D6506 /* AstronautView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,7 +188,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FBE2708285A551C000D6506 /* MissionView.swift in Sources */,
 				9FBE26EB285897FF000D6506 /* ContentView.swift in Sources */,
+				9FBE270A285B5387000D6506 /* AstronautView.swift in Sources */,
 				9FBE2706285A4D8B000D6506 /* Color-extension.swift in Sources */,
 				9FBE26E9285897FF000D6506 /* MoonshotApp.swift in Sources */,
 				9FBE27042859DDAE000D6506 /* Bundle-Decodable.swift in Sources */,
