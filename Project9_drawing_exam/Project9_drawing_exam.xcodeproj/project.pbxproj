@@ -11,6 +11,7 @@
 		9FBE2722285C8FD7000D6506 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE2721285C8FD7000D6506 /* ContentView.swift */; };
 		9FBE2724285C8FD9000D6506 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBE2723285C8FD9000D6506 /* Assets.xcassets */; };
 		9FBE2727285C8FD9000D6506 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FBE2726285C8FD9000D6506 /* Preview Assets.xcassets */; };
+		9FBE272E285E6BBC000D6506 /* ShapedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBE272D285E6BBC000D6506 /* ShapedRectangle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		9FBE2721285C8FD7000D6506 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9FBE2723285C8FD9000D6506 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9FBE2726285C8FD9000D6506 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9FBE272D285E6BBC000D6506 /* ShapedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapedRectangle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				9FBE271F285C8FD7000D6506 /* Project9_drawing_examApp.swift */,
 				9FBE2721285C8FD7000D6506 /* ContentView.swift */,
+				9FBE272D285E6BBC000D6506 /* ShapedRectangle.swift */,
 				9FBE2723285C8FD9000D6506 /* Assets.xcassets */,
 				9FBE2725285C8FD9000D6506 /* Preview Content */,
 			);
@@ -139,6 +142,7 @@
 			files = (
 				9FBE2722285C8FD7000D6506 /* ContentView.swift in Sources */,
 				9FBE2720285C8FD7000D6506 /* Project9_drawing_examApp.swift in Sources */,
+				9FBE272E285E6BBC000D6506 /* ShapedRectangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

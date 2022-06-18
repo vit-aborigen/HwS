@@ -48,6 +48,8 @@ struct ContentView: View {
                             rotationAngle = Double.random(in: -1.0...1.0)
                         }
                     }
+                
+                ShapedRectangle()
         }
     }
 }
