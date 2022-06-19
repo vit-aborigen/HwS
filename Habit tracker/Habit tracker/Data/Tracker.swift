@@ -8,7 +8,7 @@
 import Foundation
 
 class Tracker: ObservableObject {
-    var activities = Array<Activity> () {
+    @Published var activities = Array<Activity> () {
         didSet {
             let encoder = JSONEncoder()
             

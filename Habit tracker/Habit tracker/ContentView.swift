@@ -13,19 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List (activityTracker.activities) { activity in
-                NavigationLink {
-                    Text("Detailed view")
-                } label: {
-                    HStack {
-                        Text(activity.title)
-                        
-                        Spacer()
-                        
-                        Text(activity.goal == 0 ? "No goal" : "\(activity.timeSpent)" + " of \(activity.goal!) done")
-                    }
-                }
-            }
+            ActivitiesListView(activityTracker: activityTracker)
             .navigationTitle("Activities")
             .toolbar {
                 Button {
