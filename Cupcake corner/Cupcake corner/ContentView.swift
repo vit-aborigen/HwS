@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var order = Order()
     
     var body: some View {
-        Text("Test")
+        NavigationView {
+            Form {
+                MainOrderView(order: order)
+                
+                DelieveryDetailsBlockView(order: order)
+            }
+        }
     }
 }
 
