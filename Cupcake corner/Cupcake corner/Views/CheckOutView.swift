@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CheckOutView: View {
     @ObservedObject var order: Order
+    @State private var confirmationMessage = ""
+    @State private var showAlert = false
     
     var body: some View {
         VStack {
@@ -25,15 +27,44 @@ struct CheckOutView: View {
                 .font(.title)
             
             Button {
-                //
+                Task {
+                    await placeOrder()
+                }
             } label: {
                 Text("Place order")
             }
             .padding()
-            
         }
         .navigationTitle("Checkout")
         .navigationBarTitleDisplayMode(.inline)
+        .alert ("Order #xxxx", isPresented: $showAlert) {
+            Button("OK") { }
+        } message: {
+            Text(confirmationMessage)
+        }
+    }
+    
+    func placeOrder() async {
+        guard let encoded = try? JSONEncoder().encode(order) else {
+            confirmationMessage = "Failed to encode order"
+            showAlert = true
+            return
+        }
+        
+        let url = URL(string: "https://reqres.in/api/cupcakes")!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
+        request.httpMethod = "POST"
+        
+        do {
+            let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
+            let decodedOrder = try JSONDecoder().decode(Order.self, from: data)
+            confirmationMessage = "Your order of \(order.quantity)x \(order.type.rawValue) is on the way"
+            showAlert = true
+        } catch {
+            confirmationMessage = "Checkout failed"
+            showAlert = true
+        }
     }
 }
 
