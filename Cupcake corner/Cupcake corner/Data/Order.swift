@@ -35,10 +35,21 @@ class Order: ObservableObject {
     @Published var zip = ""
     
     var hasIncorrectAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
-            return true
+        (name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty)
+    }
+    
+    var cost: Double {
+        let baseCost = 2.0
+        var cost = Double(quantity) * baseCost
+        
+        if extraFrosting {
+            cost += Double(quantity)
         }
-
-        return false
+        
+        if addSprinkles {
+            cost += Double(quantity) / baseCost
+        }
+        
+        return cost
     }
 }

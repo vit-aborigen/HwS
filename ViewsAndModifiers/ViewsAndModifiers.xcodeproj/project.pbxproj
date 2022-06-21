@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FD5382B28611BCE006E2D5B /* TestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5382A28611BCE006E2D5B /* TestClass.swift */; };
+		9FD5382D28611C57006E2D5B /* NameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD5382C28611C57006E2D5B /* NameView.swift */; };
 		9FE315732843E8C3001E7A7A /* ViewsAndModifiersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE315722843E8C3001E7A7A /* ViewsAndModifiersApp.swift */; };
 		9FE315752843E8C3001E7A7A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE315742843E8C3001E7A7A /* ContentView.swift */; };
 		9FE315772843E8C5001E7A7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FE315762843E8C5001E7A7A /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9FD5382A28611BCE006E2D5B /* TestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClass.swift; sourceTree = "<group>"; };
+		9FD5382C28611C57006E2D5B /* NameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameView.swift; sourceTree = "<group>"; };
 		9FE3156F2843E8C3001E7A7A /* ViewsAndModifiers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewsAndModifiers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FE315722843E8C3001E7A7A /* ViewsAndModifiersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsAndModifiersApp.swift; sourceTree = "<group>"; };
 		9FE315742843E8C3001E7A7A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,10 +55,12 @@
 		9FE315712843E8C3001E7A7A /* ViewsAndModifiers */ = {
 			isa = PBXGroup;
 			children = (
-				9FE315722843E8C3001E7A7A /* ViewsAndModifiersApp.swift */,
 				9FE315742843E8C3001E7A7A /* ContentView.swift */,
+				9FD5382C28611C57006E2D5B /* NameView.swift */,
+				9FD5382A28611BCE006E2D5B /* TestClass.swift */,
 				9FE315762843E8C5001E7A7A /* Assets.xcassets */,
 				9FE315782843E8C5001E7A7A /* Preview Content */,
+				9FE315722843E8C3001E7A7A /* ViewsAndModifiersApp.swift */,
 			);
 			path = ViewsAndModifiers;
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FE315752843E8C3001E7A7A /* ContentView.swift in Sources */,
+				9FD5382D28611C57006E2D5B /* NameView.swift in Sources */,
+				9FD5382B28611BCE006E2D5B /* TestClass.swift in Sources */,
 				9FE315732843E8C3001E7A7A /* ViewsAndModifiersApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

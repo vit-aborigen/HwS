@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("age") private var age = 30
+    @StateObject var testClass = Test(name: "")
+    @StateObject var myOrder: Order?
 
     var body: some View {
-        Button("Age now is \(age)") {
-            age += 1
+        NavigationView {
+            Form {
+                NavigationLink {
+                    NameView(testClass: testClass)
+                } label: {
+                    Text("Proceed to \(testClass.name)")
+            }
+            }
         }
     }
 }
