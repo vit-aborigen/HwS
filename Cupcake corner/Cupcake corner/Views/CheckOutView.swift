@@ -57,9 +57,9 @@ struct CheckOutView: View {
         request.httpMethod = "POST"
         
         do {
-            let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
+            let (data, status) = try await URLSession.shared.upload(for: request, from: encoded)
             let decodedOrder = try JSONDecoder().decode(Order.self, from: data)
-            confirmationMessage = "Your order of \(order.quantity)x \(order.type.rawValue) is on the way"
+            confirmationMessage = "Your order of \(decodedOrder.quantity)x \(decodedOrder.type.rawValue) is on the way"
             showAlert = true
         } catch {
             confirmationMessage = "Checkout failed"

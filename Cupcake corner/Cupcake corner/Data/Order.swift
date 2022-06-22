@@ -39,7 +39,7 @@ class Order: Codable, ObservableObject {
     @Published var zip = ""
     
     var hasIncorrectAddress: Bool {
-        (name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty)
+        (name.isEmpty || streetAddress.trimmingCharacters(in: .whitespaces).isEmpty || city.isEmpty || zip.isEmpty)
     }
     
     var cost: Double {
