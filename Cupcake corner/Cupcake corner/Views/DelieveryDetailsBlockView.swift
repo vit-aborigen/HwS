@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DelieveryDetailsBlockView: View {
-    @ObservedObject var order: Order
+    @ObservedObject var order: SharedOrder
     
     var body: some View {
         Section {
@@ -23,6 +23,6 @@ struct DelieveryDetailsBlockView: View {
 
 struct DelieveryDetailsBlockView_Previews: PreviewProvider {
     static var previews: some View {
-        DelieveryDetailsBlockView(order: Order())
+        DelieveryDetailsBlockView(order: SharedOrder())
     }
 }

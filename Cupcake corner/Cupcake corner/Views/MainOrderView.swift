@@ -8,34 +8,34 @@
 import SwiftUI
 
 struct MainOrderView: View {
-    @ObservedObject var order: Order
+    @ObservedObject var order: SharedOrder
     
     var body: some View {
         Section {
-            Picker("Select your cake", selection: $order.type) {
+            Picker("Select your cake", selection: $order.data.type) {
                 ForEach(Cupcakes.allCases, id: \.self) {
                     Text("\($0.rawValue)")
                 }
             }
             .pickerStyle(.segmented)
             
-            Stepper("Number of cakes: \(order.quantity)", value: $order.quantity, in: 1...20)
+            Stepper("Number of cakes: \(order.data.quantity)", value: $order.data.quantity, in: 1...20)
         }
         
         Section {
-            Toggle("Any special request?", isOn: $order.specialRequestEnabled.animation())
+            Toggle("Any special request?", isOn: $order.data.specialRequestEnabled.animation())
         }
         
-        if order.specialRequestEnabled {
-            Toggle("Add extra frosting?", isOn: $order.extraFrosting)
+        if order.data.specialRequestEnabled {
+            Toggle("Add extra frosting?", isOn: $order.data.extraFrosting)
             
-            Toggle("Add extra sprinkles?", isOn: $order.addSprinkles)
+            Toggle("Add extra sprinkles?", isOn: $order.data.addSprinkles)
         }
     }
 }
 
 struct MainOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        MainOrderView(order: Order())
+        MainOrderView(order: SharedOrder())
     }
 }

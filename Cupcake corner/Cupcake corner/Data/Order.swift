@@ -18,45 +18,26 @@ enum CodingKeys: CodingKey {
     case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
 }
 
-class Order: Codable, ObservableObject {
-    @Published var type = Cupcakes.vanilla
-    @Published var quantity = 1
+@dynamicMemberLookup
+class SharedOrder: ObservableObject {
+    @Published var data = Order()
     
-    @Published var specialRequestEnabled = false {
-        didSet {
-            if specialRequestEnabled == false {
-                extraFrosting = false
-                addSprinkles = false
+    subscript<T>(dynamicMember keyPath: KeyPath<Order, T>) -> T {
+            data[keyPath: keyPath]
+        }
+
+        subscript<T>(dynamicMember keyPath: WritableKeyPath<Order, T>) -> T {
+            get {
+                data[keyPath: keyPath]
+            }
+
+            set {
+                data[keyPath: keyPath] = newValue
             }
         }
-    }
-    @Published var extraFrosting = false
-    @Published var addSprinkles = false
     
-    @Published var name = ""
-    @Published var streetAddress = ""
-    @Published var city = ""
-    @Published var zip = ""
-    
-    var hasIncorrectAddress: Bool {
-        (name.isEmpty || streetAddress.trimmingCharacters(in: .whitespaces).isEmpty || city.isEmpty || zip.isEmpty)
-    }
-    
-    var cost: Double {
-        let baseCost = 2.0
-        var cost = Double(quantity) * baseCost
-        
-        if extraFrosting {
-            cost += Double(quantity)
-        }
-        
-        if addSprinkles {
-            cost += Double(quantity) / baseCost
-        }
-        
-        return cost
-    }
-    
+    /* OLD Decodable conformance
+     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
@@ -84,4 +65,47 @@ class Order: Codable, ObservableObject {
     }
     
     init() { }
+     
+    */
+}
+
+struct Order: Codable {
+    var type = Cupcakes.vanilla
+    var quantity = 1
+    
+    var specialRequestEnabled = false {
+        didSet {
+            if specialRequestEnabled == false {
+                extraFrosting = false
+                addSprinkles = false
+            }
+        }
+    }
+    
+    var extraFrosting = false
+    var addSprinkles = false
+    
+    var name = ""
+    var streetAddress = ""
+    var city = ""
+    var zip = ""
+    
+    var hasIncorrectAddress: Bool {
+        (name.isEmpty || streetAddress.trimmingCharacters(in: .whitespaces).isEmpty || city.isEmpty || zip.isEmpty)
+    }
+    
+    var cost: Double {
+        let baseCost = 2.0
+        var cost = Double(quantity) * baseCost
+        
+        if extraFrosting {
+            cost += Double(quantity)
+        }
+        
+        if addSprinkles {
+            cost += Double(quantity) / baseCost
+        }
+        
+        return cost
+    }
 }
