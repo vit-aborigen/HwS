@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: []) var books: FetchedResults<Book>
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.title),
+        SortDescriptor(\.author)
+    ]) var books: FetchedResults<Book>
 
     @State private var showAddBook = false
     
@@ -19,7 +22,7 @@ struct ContentView: View {
                 List {
                     ForEach(books) { book in
                         NavigationLink {
-                            Text(book.title ?? "N/A")
+                            DetailsView(book: book)
                         } label: {
                             HStack {
                                 EmojiRatingView(rating: book.rating)
@@ -34,19 +37,34 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .onDelete(perform: deleteBook)
                 }
                 .navigationTitle("Bookworm")
+                .sheet(isPresented: $showAddBook) {
+                    AddBookView()
+                }
                 .toolbar {
-                    Button {
-                        showAddBook.toggle()
-                    } label: {
-                        Image(systemName: "plus")
+                    ToolbarItem (placement: .navigationBarLeading) {
+                        EditButton()
                     }
-                    .sheet(isPresented: $showAddBook) {
-                        AddBookView()
+                    
+                    ToolbarItem (placement: .navigationBarTrailing) {
+                        Button {
+                            showAddBook.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                        }
                     }
                 }
             }
+        }
+    }
+    
+    func deleteBook(at offsets: IndexSet) {
+        for offset in offsets {
+            let book = books[offset]
+            moc.delete(book)
+            try? moc.save()
         }
     }
 }

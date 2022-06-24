@@ -20,12 +20,12 @@ struct RatingView: View {
             HStack {
                 ForEach(1...5, id: \.self) { number in
                     Image(systemName: "star.fill")
-                        .scaleEffect(1.5)
+                        .scaleEffect(1.3)
                         .padding(15)
                         .onTapGesture {
                             rating = number
                         }
-                        .scaleEffect(number == rating ? 1.9 : 1.4)
+                        .scaleEffect(number == rating ? 1.8 : 1.3)
                         .foregroundColor(number <= rating ? .yellow : .gray)
                         .animation(
                             .linear.delay(Double(number)/10),
