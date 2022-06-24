@@ -14,14 +14,38 @@ struct ContentView: View {
     @State private var showAddBook = false
     
     var body: some View {
-        VStack {
-            Button {
-                showAddBook.toggle()
-            } label: {
-                Text("Add book")
-            }
-            .sheet(isPresented: $showAddBook) {
-                AddBookView()
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(books) { book in
+                        NavigationLink {
+                            Text(book.title ?? "N/A")
+                        } label: {
+                            HStack {
+                                EmojiRatingView(rating: book.rating)
+                                    .font(.largeTitle)
+                            }
+                            
+                            VStack(alignment: .leading) {
+                                Text(book.title ?? "N/A")
+                                    .font(.headline)
+                                Text(book.author ?? "N/A")
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+                }
+                .navigationTitle("Bookworm")
+                .toolbar {
+                    Button {
+                        showAddBook.toggle()
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $showAddBook) {
+                        AddBookView()
+                    }
+                }
             }
         }
     }
