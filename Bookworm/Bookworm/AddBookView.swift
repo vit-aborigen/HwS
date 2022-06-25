@@ -16,6 +16,7 @@ struct AddBookView: View {
     @State private var rating = 3
     @State private var genre = BookGenre.horror
     @State private var author = ""
+    @State private var date = Date.now
     
     var body: some View {
         NavigationView {
@@ -30,6 +31,9 @@ struct AddBookView: View {
                             Text("\($0.rawValue)")
                         }
                     }
+                    
+                    DatePicker("Year", selection: $date, displayedComponents: .date)
+                        .datePickerStyle(.compact)
                 }
                 
                 Section {
@@ -49,12 +53,16 @@ struct AddBookView: View {
                         newBook.rating = Int16(rating)
                         newBook.genre = genre.rawValue
                         newBook.review = review
+                        newBook.date = date
                         
                         try? moc.save()
                         dismiss()
                     } label: {
                          Text("Save")
                     }
+                    .disabled(
+                        author.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                    )
                 }
             }
             .navigationTitle("Add book")

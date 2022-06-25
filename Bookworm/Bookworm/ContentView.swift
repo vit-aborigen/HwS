@@ -30,8 +30,9 @@ struct ContentView: View {
                             }
                             
                             VStack(alignment: .leading) {
-                                Text(book.title ?? "N/A")
+                                Text("\(book.title ?? "N/A") (\(book.date?.formatted(date: .abbreviated, time: .omitted) ?? "N/A"))")
                                     .font(.headline)
+                                    .foregroundColor(book.rating == 1 ? .red : .primary)
                                 Text(book.author ?? "N/A")
                                     .foregroundColor(.secondary)
                             }
