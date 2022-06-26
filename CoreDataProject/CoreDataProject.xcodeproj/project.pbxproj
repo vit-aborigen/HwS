@@ -13,6 +13,9 @@
 		9F762C78286898D0007E9025 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F762C77286898D0007E9025 /* Preview Assets.xcassets */; };
 		9F762C802868990F007E9025 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F762C7E2868990F007E9025 /* DataModel.xcdatamodeld */; };
 		9F762C822868999D007E9025 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F762C812868999D007E9025 /* DataController.swift */; };
+		9F762C852868C819007E9025 /* Singer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F762C832868C819007E9025 /* Singer+CoreDataClass.swift */; };
+		9F762C862868C819007E9025 /* Singer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F762C842868C819007E9025 /* Singer+CoreDataProperties.swift */; };
+		9F762C882868C94C007E9025 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F762C872868C94C007E9025 /* FilteredList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		9F762C77286898D0007E9025 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9F762C7F2868990F007E9025 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		9F762C812868999D007E9025 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		9F762C832868C819007E9025 /* Singer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Singer+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9F762C842868C819007E9025 /* Singer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Singer+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9F762C872868C94C007E9025 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +61,11 @@
 		9F762C6F286898CF007E9025 /* CoreDataProject */ = {
 			isa = PBXGroup;
 			children = (
+				9F762C832868C819007E9025 /* Singer+CoreDataClass.swift */,
+				9F762C842868C819007E9025 /* Singer+CoreDataProperties.swift */,
 				9F762C70286898CF007E9025 /* CoreDataProjectApp.swift */,
 				9F762C812868999D007E9025 /* DataController.swift */,
+				9F762C872868C94C007E9025 /* FilteredList.swift */,
 				9F762C72286898CF007E9025 /* ContentView.swift */,
 				9F762C7E2868990F007E9025 /* DataModel.xcdatamodeld */,
 				9F762C74286898D0007E9025 /* Assets.xcassets */,
@@ -144,9 +153,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F762C802868990F007E9025 /* DataModel.xcdatamodeld in Sources */,
+				9F762C862868C819007E9025 /* Singer+CoreDataProperties.swift in Sources */,
 				9F762C822868999D007E9025 /* DataController.swift in Sources */,
+				9F762C852868C819007E9025 /* Singer+CoreDataClass.swift in Sources */,
 				9F762C73286898CF007E9025 /* ContentView.swift in Sources */,
 				9F762C71286898CF007E9025 /* CoreDataProjectApp.swift in Sources */,
+				9F762C882868C94C007E9025 /* FilteredList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
