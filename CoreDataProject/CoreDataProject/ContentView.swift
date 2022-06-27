@@ -11,10 +11,14 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @State private var lastNameFilter = "A"
+    @State private var predicateExpression = "BEGINSWITH"
+    @State private var sortOrderReverse = false
+    
+    @State private var sortDescriptors = [SortDescriptor<Singer>]()
     
     var body: some View {
         VStack {
-            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+            FilteredList(expression: predicateExpression, filterKey: "lastName", filterValue: lastNameFilter, sortDescriptors: sortDescriptors) { (singer: Singer) in
                 Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
             }
             
@@ -40,6 +44,18 @@ struct ContentView: View {
             
             Button("Show S") {
                 lastNameFilter = "S"
+            }
+            
+            Picker("Expression", selection: $predicateExpression) {
+                ForEach(FilterType.allCases, id: \.self.rawValue) {
+                    Text($0.rawValue)
+                }
+                .pickerStyle(.segmented)
+            }
+            
+            Button("Change order") {
+                sortOrderReverse.toggle()
+                sortDescriptors = [SortDescriptor(\.lastName, order: sortOrderReverse ? .forward : .reverse)]
             }
         }
     }

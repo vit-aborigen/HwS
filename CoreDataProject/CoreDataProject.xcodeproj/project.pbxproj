@@ -16,6 +16,7 @@
 		9F762C852868C819007E9025 /* Singer+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F762C832868C819007E9025 /* Singer+CoreDataClass.swift */; };
 		9F762C862868C819007E9025 /* Singer+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F762C842868C819007E9025 /* Singer+CoreDataProperties.swift */; };
 		9F762C882868C94C007E9025 /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F762C872868C94C007E9025 /* FilteredList.swift */; };
+		9F762CA42869CC08007E9025 /* FilterTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F762CA32869CC08007E9025 /* FilterTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		9F762C832868C819007E9025 /* Singer+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Singer+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9F762C842868C819007E9025 /* Singer+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Singer+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9F762C872868C94C007E9025 /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
+		9F762CA32869CC08007E9025 /* FilterTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				9F762C812868999D007E9025 /* DataController.swift */,
 				9F762C872868C94C007E9025 /* FilteredList.swift */,
 				9F762C72286898CF007E9025 /* ContentView.swift */,
+				9F762CA32869CC08007E9025 /* FilterTypes.swift */,
 				9F762C7E2868990F007E9025 /* DataModel.xcdatamodeld */,
 				9F762C74286898D0007E9025 /* Assets.xcassets */,
 				9F762C76286898D0007E9025 /* Preview Content */,
@@ -159,6 +162,7 @@
 				9F762C73286898CF007E9025 /* ContentView.swift in Sources */,
 				9F762C71286898CF007E9025 /* CoreDataProjectApp.swift in Sources */,
 				9F762C882868C94C007E9025 /* FilteredList.swift in Sources */,
+				9F762CA42869CC08007E9025 /* FilterTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
