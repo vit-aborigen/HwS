@@ -15,6 +15,7 @@
 		9F8F2ADD286B64D000DB17A3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8F2ADC286B64D000DB17A3 /* User.swift */; };
 		9F8F2AE0286B841C00DB17A3 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8F2ADF286B841C00DB17A3 /* UserListView.swift */; };
 		9F8F2AE2286B843A00DB17A3 /* UserDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8F2AE1286B843A00DB17A3 /* UserDetailedView.swift */; };
+		9F8F2AE5286C3B7E00DB17A3 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8F2AE4286C3B7E00DB17A3 /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		9F8F2ADC286B64D000DB17A3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9F8F2ADF286B841C00DB17A3 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = SOURCE_ROOT; };
 		9F8F2AE1286B843A00DB17A3 /* UserDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailedView.swift; sourceTree = "<group>"; };
+		9F8F2AE4286C3B7E00DB17A3 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				9F8F2ACB286B5E2C00DB17A3 /* FriendsFaceApp.swift */,
 				9F8F2ACD286B5E2C00DB17A3 /* ContentView.swift */,
+				9F8F2AE3286C3B6500DB17A3 /* ViewModels */,
 				9F8F2AD9286B644B00DB17A3 /* Data */,
 				9F8F2ADE286B657600DB17A3 /* Views */,
 				9F8F2ACF286B5E2E00DB17A3 /* Assets.xcassets */,
@@ -93,6 +96,14 @@
 				9F8F2AE1286B843A00DB17A3 /* UserDetailedView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9F8F2AE3286C3B6500DB17A3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9F8F2AE4286C3B7E00DB17A3 /* ContentViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				9F8F2AE0286B841C00DB17A3 /* UserListView.swift in Sources */,
 				9F8F2AE2286B843A00DB17A3 /* UserDetailedView.swift in Sources */,
 				9F8F2ADD286B64D000DB17A3 /* User.swift in Sources */,
+				9F8F2AE5286C3B7E00DB17A3 /* ContentViewModel.swift in Sources */,
 				9F8F2ADB286B646200DB17A3 /* Friend.swift in Sources */,
 				9F8F2ACE286B5E2C00DB17A3 /* ContentView.swift in Sources */,
 				9F8F2ACC286B5E2C00DB17A3 /* FriendsFaceApp.swift in Sources */,
