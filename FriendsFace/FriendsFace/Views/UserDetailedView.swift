@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserDetailedView: View {
     var user: User
+    @Environment(\.managedObjectContext) var moc
     
     var body: some View {
         List {

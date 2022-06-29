@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class ContentViewModel: ObservableObject {
+    @Environment(\.managedObjectContext) var moc
     @Published var users: [User] = Array<User> ()
     private var serverAddress = "https://www.hackingwithswift.com/samples/friendface.json"
     
@@ -28,6 +29,31 @@ class ContentViewModel: ObservableObject {
             }
         } catch {
             print(error.localizedDescription)
+        }
+    }
+    
+    func cacheUsers (from usersFromInternet: [User]) {
+        for inetUser in usersFromInternet {
+            let cachedUser = CachedUser(context: moc)
+            
+            cachedUser.id = inetUser.id
+            cachedUser.isActive = inetUser.isActive
+            cachedUser.age = Int16(inetUser.age)
+            cachedUser.company = inetUser.company
+            cachedUser.email = inetUser.email
+            cachedUser.address = inetUser.address
+            cachedUser.about = inetUser.about
+            cachedUser.registered = inetUser.registered
+            cachedUser.tags = inetUser.tags.joined(separator: ",")
+            
+            for friend in inetUser.friends {
+                let cachedFriend = CachedFriend(context: moc)
+                cachedFriend.id = friend.id
+                cachedFriend.name = friend.name
+                cachedUser.addToFriends(cachedFriend)
+            }
+            
+            try? moc.save()
         }
     }
 }

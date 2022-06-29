@@ -12,17 +12,25 @@ struct ContentView: View {
     @State private var result = ""
     @StateObject var vm = ContentViewModel()
     
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var fetchResults: FetchedResults<CachedFriend>
+    
     var body: some View {
         NavigationView {
-            UserList(users: vm.users)
-                .navigationTitle("Friends' face")
-                .task {
-                    await(vm.getDataFromServer())
+            HStack {
+                UserList(users: vm.users)
+                    .navigationTitle("Friends' face")
+                    .task {
+                        await(vm.getDataFromServer())
+                        vm.cacheUsers(from: users)
+                    }
+                
+                List(fetchResults, id: \.self) { user in
+                    Text(user.wrappedName)
                 }
+            }
         }
     }
-    
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
