@@ -13,7 +13,7 @@ struct ContentView: View {
     @StateObject var vm = ContentViewModel()
     
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var fetchResults: FetchedResults<CachedFriend>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var fetchResults: FetchedResults<CachedUser>
     
     var body: some View {
         NavigationView {
@@ -22,10 +22,10 @@ struct ContentView: View {
                     .navigationTitle("Friends' face")
                     .task {
                         await(vm.getDataFromServer())
-                        vm.cacheUsers(from: users)
+                        //vm.cacheUsers()
                     }
                 
-                List(fetchResults, id: \.self) { user in
+                List(fetchResults) { user in
                     Text(user.wrappedName)
                 }
             }
