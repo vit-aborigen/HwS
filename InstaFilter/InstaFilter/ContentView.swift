@@ -17,6 +17,8 @@ struct ContentView: View {
     @State private var filterIntensity: Float = 0.5
     @State private var isImagePickerShown = false
     
+    var filtersList = FiltersList()
+    
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
     
@@ -40,7 +42,9 @@ struct ContentView: View {
                 .onTapGesture {
                     isImagePickerShown = true
                 }
+                .frame(minHeight: 300)
                 
+                FiltersView(filterList: filtersList)
                 
                 HStack {
                     Text("Sepia")
@@ -53,7 +57,7 @@ struct ContentView: View {
                 }
                 
                 HStack {
-                    Button("Change filter") {
+                    Button("Add filter") {
                         showingFilterSheet = true
                     }
                     
@@ -70,14 +74,14 @@ struct ContentView: View {
                 ImagePicker(image: $inputImage)
             }
             .confirmationDialog("Select a filter", isPresented: $showingFilterSheet) {
-                Button("Crystallize") { setFilter(CIFilter.crystallize()) }
-                Button("Edges") { setFilter(CIFilter.edges()) }
-                Button("Gaussian Blur") { setFilter(CIFilter.gaussianBlur()) }
-                Button("Pixellate") { setFilter(CIFilter.pixellate()) }
-                Button("Sepia Tone") { setFilter(CIFilter.sepiaTone()) }
-                Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask()) }
-                Button("Vignette") { setFilter(CIFilter.vignette()) }
+                ForEach(filtersList.availableFilters(), id: \.self) { filter in
+                    Button("\(filter.humanName)") {
+                        filtersList.filtersInUse.append(filter.self)
+                        setFilter(filter.self)
+                    }
+                }
                 Button("Cancel", role: .cancel) { }
+                
             }
         }
     }
