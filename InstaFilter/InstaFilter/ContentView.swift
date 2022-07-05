@@ -13,8 +13,8 @@ struct ContentView: View {
     @State private var image: Image?
     @State private var inputImage: UIImage?
     @State private var processedImage: UIImage?
-    
-    @State private var filterIntensity: Float = 0.5
+
+    @State private var filterIntensity = 0.5
     @State private var isImagePickerShown = false
     
     var filtersList = FiltersList()
@@ -45,16 +45,6 @@ struct ContentView: View {
                 .frame(minHeight: 300)
                 
                 FiltersView(filterList: filtersList)
-                
-                HStack {
-                    Text("Sepia")
-                    
-                    Slider(value: $filterIntensity)
-                        .padding(.vertical)
-                        .onChange(of: filterIntensity) { _ in
-                            applyProcessing()
-                        }
-                }
                 
                 HStack {
                     Button("Add filter") {

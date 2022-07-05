@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FiltersView: View {
     @State private var filterIntensity: Float = 0.5
+    @State private var keys = 0
+    
     @ObservedObject var filterList: FiltersList
     
     @State var isSectionOpened = false
@@ -18,22 +20,21 @@ struct FiltersView: View {
             ForEach(filterList.filtersInUse, id: \.self) { filter in
                 VStack {
                     Section(filter.humanName) {
-                        ForEach(filterList.getKeysForFilter(for: filter), id: \.self) { key in
+                        ForEach(filterList.getKeysForFilter(for: filter).keys.sorted(), id: \.self) { key in
                             HStack {
-                                Text(key)
+                                Text("\(key)")
                                 
                                 Slider(value: $filterIntensity)
                             }
                         }
                     }
-                    .alignmentGuide(.trailing, computeValue: {_ in 100.0 })
                 }
             }
-            .onDelete { _ in }
+            .onDelete(perform: deleteSection)
         }
     }
     
     func deleteSection(at: IndexSet) {
-        
+        filterList.filtersInUse.remove(atOffsets: at)
     }
 }

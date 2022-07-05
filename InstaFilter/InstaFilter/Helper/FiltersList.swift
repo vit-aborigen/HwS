@@ -9,22 +9,10 @@ import CoreImage
 import CoreImage.CIFilterBuiltins
 import Foundation
 
-extension CIFilter {
-    var humanName: String {
-        if name.count < 3 { return name}
-    
-        var splittedName = ""
-        for char in name {
-            if char.isUppercase {
-                splittedName += " "
-            }
-            splittedName += String(char)
-        }
-        
-        let startIndex = splittedName.index(splittedName.startIndex, offsetBy: 5)
-        let withoutCI = String(splittedName[startIndex...])
-        return withoutCI
-    }
+enum FilterKeys: String {
+    case kCIInputIntensityKey = "Intensity"
+    case kCIInputRadiusKey = "Radius"
+    case kCIInputScaleKey = "Scale"
 }
 
 class FiltersList: Identifiable, ObservableObject {
@@ -36,12 +24,24 @@ class FiltersList: Identifiable, ObservableObject {
         allFilters.filter { !filtersInUse.contains($0) }
     }
     
-    public func getKeysForFilter(for filter: CIFilter) -> [String] {
-        var allKeys = filter.inputKeys
-        if allKeys.contains("inputImage") {
-            allKeys.remove(at: 0)
+    public func getKeysForFilter(for filter: CIFilter) -> [String: String] {
+        var filtersWithName = Dictionary<String, String> ()
+        
+        for key in filter.inputKeys {
+            if key.contains(kCIInputIntensityKey) {
+                filtersWithName[key] = "Intensity"
+            }
+            
+            if key.contains(kCIInputRadiusKey) {
+                filtersWithName[key] = "Radius"
+            }
+            
+            if key.contains(kCIInputScaleKey) {
+                filtersWithName[key] = "Scale"
+            }
         }
-        return allKeys
+        
+        return filtersWithName
     }
     
 }
