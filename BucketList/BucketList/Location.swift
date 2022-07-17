@@ -6,25 +6,22 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Location: Codable, Equatable, Identifiable {
     var id: UUID
-    let name: String
-    let description: String
-    let latitude: Double
-    let longitude: Double
-}
-
-/*
-struct tmp {
-    let name: String
-}
-
-struct ComplexOne: Codable {
-    var property: tmp
+    var name: String
+    var description: String
+    var latitude: Double
+    var longitude: Double
     
-    enum CodingKeys: String, CodingKeys {
-        case property
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    
+    static func ==(lhs: Location, rhs: Location) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    static let example = Location(id: UUID(), name: "Example name", description: "Description for a preview", latitude: 51.1, longitude: -0.14)
 }
-*/
