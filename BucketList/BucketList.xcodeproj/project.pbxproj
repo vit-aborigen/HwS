@@ -16,6 +16,7 @@
 		9F8F2B842874BE5200DB17A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8F2B832874BE5200DB17A3 /* ContentView.swift */; };
 		9F8F2B862874BE5400DB17A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8F2B852874BE5400DB17A3 /* Assets.xcassets */; };
 		9F8F2B892874BE5400DB17A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8F2B882874BE5400DB17A3 /* Preview Assets.xcassets */; };
+		9FEA0B0728956E9200BB96E0 /* EditView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEA0B0628956E9200BB96E0 /* EditView-ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		9F8F2B832874BE5200DB17A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9F8F2B852874BE5400DB17A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F8F2B882874BE5400DB17A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9FEA0B0628956E9200BB96E0 /* EditView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditView-ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +64,13 @@
 			isa = PBXGroup;
 			children = (
 				9F2F4E3A28844DBF00CB00C6 /* Location.swift */,
-				9F8F2B832874BE5200DB17A3 /* ContentView.swift */,
 				9F704EED288DD6DA0090DEDC /* FileManager-DocumentsDirectory.swift */,
 				9F8F2B812874BE5200DB17A3 /* BucketListApp.swift */,
 				9F704EE7288C1AEF0090DEDC /* Result.swift */,
+				9F8F2B832874BE5200DB17A3 /* ContentView.swift */,
 				9F2F4E3C288477E300CB00C6 /* LocationSheetView.swift */,
 				9F704EEB288C69B60090DEDC /* ContentView-ViewModel.swift */,
+				9FEA0B0628956E9200BB96E0 /* EditView-ViewModel.swift */,
 				9F8F2B852874BE5400DB17A3 /* Assets.xcassets */,
 				9F8F2B872874BE5400DB17A3 /* Preview Content */,
 			);
@@ -157,6 +160,7 @@
 				9F704EEC288C69B60090DEDC /* ContentView-ViewModel.swift in Sources */,
 				9F704EE8288C1AEF0090DEDC /* Result.swift in Sources */,
 				9F2F4E3B28844DBF00CB00C6 /* Location.swift in Sources */,
+				9FEA0B0728956E9200BB96E0 /* EditView-ViewModel.swift in Sources */,
 				9F8F2B822874BE5200DB17A3 /* BucketListApp.swift in Sources */,
 				9F2F4E3D288477E300CB00C6 /* LocationSheetView.swift in Sources */,
 			);
