@@ -15,6 +15,9 @@ extension ContentView {
         @Published var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 53.88, longitude: 27.56), span: MKCoordinateSpan(latitudeDelta: 0.077, longitudeDelta: 0.08))
         @Published var selectedPlace: Location?
         @Published var isUnlocked = false
+        
+        @Published var authErrorMessage = "Failed to authenticate"
+        @Published var showAuthAlert = false
 
         let savePath = FileManager.documentsDirectory.appendingPathComponent("Saved places")
         
@@ -58,19 +61,19 @@ extension ContentView {
             if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
                 let reason = "Please unlock your device"
                 
-                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authError in
-                    if success {
-                        Task {
-                            Task { @MainActor in
-                                self.isUnlocked = true
-                            }
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, _ in
+                    Task { @MainActor in
+                        if success {
+                            self.isUnlocked = true
+                        } else {
+                            self.authErrorMessage = "Failed to authenticate"
+                            self.showAuthAlert = true
                         }
-                    } else {
-                        // error
                     }
                 }
             } else {
-                // no bio
+                authErrorMessage = "No biometrics found"
+                showAuthAlert = true
             }
         }
     }
