@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     enum currentFocus {
         case inputNewWordField
     }
@@ -17,10 +16,7 @@ struct ContentView: View {
     @FocusState private var focusedControl: currentFocus?
     
     var score: Int {
-        var sum: Int = 0
-        if myVM.userWords.isEmpty {
-            return sum
-        }
+        var sum = 0
         
         for word in myVM.userWords {
             sum += word.count
@@ -46,8 +42,9 @@ struct ContentView: View {
                             Image(systemName: "\(word.count).circle")
                             Text("\(word)")
                         }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel("\(word), \(word.count) letter")
                     }
-                    
                 }
             }
             .navigationTitle(myVM.rootWord)
@@ -65,7 +62,7 @@ struct ContentView: View {
         }
         .onAppear(perform: myVM.pickANewWord)
         .alert(myVM.errorTitle, isPresented: $myVM.showError) {
-            Button("OK") { }
+            Button("OK") {}
         } message: {
             Text(myVM.errorMessage)
         }
