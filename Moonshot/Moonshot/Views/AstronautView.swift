@@ -9,14 +9,14 @@ import SwiftUI
 
 struct AstronautView: View {
     let astonaut: Astronaut
-    
+
     var body: some View {
         ScrollView {
             VStack {
-                Image(astonaut.id)
+                Image(decorative: astonaut.id)
                     .resizable()
                     .scaledToFit()
-                
+
                 Text(astonaut.description)
                     .padding()
             }
@@ -28,8 +28,8 @@ struct AstronautView: View {
 }
 
 struct AstronautView_Previews: PreviewProvider {
-    static let astronauts:[String: Astronaut] = Bundle.main.decode(file: "astronauts.json")
-    
+    static let astronauts: [String: Astronaut] = Bundle.main.decode(file: "astronauts.json")
+
     static var previews: some View {
         AstronautView(astonaut: astronauts["aldrin"]!)
             .preferredColorScheme(.dark)

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Missions_AstronautsView: View {
     let crew: [CrewMember]
-    
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
@@ -18,7 +18,7 @@ struct Missions_AstronautsView: View {
                         AstronautView(astonaut: crewMember.astronaut)
                     } label: {
                         HStack {
-                            Image(crewMember.astronaut.id)
+                            Image(decorative: crewMember.astronaut.id)
                                 .resizable()
                                 .frame(width: 104, height: 72)
                                 .clipShape(Capsule())
@@ -26,12 +26,12 @@ struct Missions_AstronautsView: View {
                                     Capsule()
                                         .strokeBorder(.white, lineWidth: 1)
                                 )
-                            
+
                             VStack(alignment: .leading) {
                                 Text(crewMember.astronaut.name)
                                     .foregroundColor(.white)
                                     .font(.headline)
-                                
+
                                 Text(crewMember.role)
                                     .foregroundColor(.secondary)
                             }
