@@ -46,7 +46,6 @@
 		9F8F2AF5286F0F1A00DB17A3 = {
 			isa = PBXGroup;
 			children = (
-				9F8F2B732874BB7100DB17A3 /* FilterExtension.swift */,
 				9F8F2B00286F0F1A00DB17A3 /* InstaFilter */,
 				9F8F2AFF286F0F1A00DB17A3 /* Products */,
 			);
@@ -63,6 +62,7 @@
 		9F8F2B00286F0F1A00DB17A3 /* InstaFilter */ = {
 			isa = PBXGroup;
 			children = (
+				9F8F2B732874BB7100DB17A3 /* FilterExtension.swift */,
 				9F8F2B142872F62A00DB17A3 /* Helper */,
 				9F8F2B1128706BF800DB17A3 /* Info.plist */,
 				9F8F2B01286F0F1A00DB17A3 /* InstaFilterApp.swift */,
