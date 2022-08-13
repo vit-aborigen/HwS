@@ -13,20 +13,28 @@ struct ConferenceBriefView: View {
     
     var body: some View {
         HStack {
-            Text(conf.place)
+            VStack {
+                Text(conf.name)
+                    .font(.headline).bold()
+                
+                Text(conf.place)
+            }
             
             Text(conf.date.formatted(date: .long, time: .omitted))
             
-            Text(conf.name)
+            Spacer()
             
-            Text("Full info")
-                .foregroundColor(.blue)
-                .onTapGesture {
-                    showDetails = true
-                }
-                .sheet(isPresented: $showDetails) {
-                    ConferenceFullView()
-                }
+            Text("\(conf.attendees.count)")
+                .padding()
+                .foregroundColor(.white)
+                .background(.blue)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+        .onTapGesture {
+            showDetails = true
+        }
+        .sheet(isPresented: $showDetails) {
+            ConferenceFullView()
         }
     }
 }
