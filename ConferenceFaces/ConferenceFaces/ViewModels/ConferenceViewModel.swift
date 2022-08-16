@@ -21,8 +21,7 @@ extension MainView {
             }
         }
 
-        func addConference(name: String, place: String, date: Date, attendees: [User] = []) {
-            let newConference = Conference(name: name, place: place, date: date, attendees: attendees)
+        func addConference(newConference: Conference) {
             conferences.append(newConference)
             saveData()
         }
@@ -31,7 +30,13 @@ extension MainView {
             conferences.remove(atOffsets: offset)
             saveData()
         }
-        
+
+        func updateConference(conference: Conference) {
+            // 2do: find conference and update it
+
+            saveData()
+        }
+
         func saveData() {
             do {
                 let data = try JSONEncoder().encode(conferences)

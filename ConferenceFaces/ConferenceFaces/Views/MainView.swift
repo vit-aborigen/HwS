@@ -10,8 +10,6 @@ import SwiftUI
 struct MainView: View {
     @StateObject private var confVM = ConferenceViewModel()
 
-    @State private var showAddConferenceDialog = false
-
     var body: some View {
         NavigationView {
             VStack {
@@ -31,8 +29,10 @@ struct MainView: View {
                 HStack {
                     Spacer()
 
-                    Button {
-                        confVM.addConference(name: "test", place: "test", date: Date.now)
+                    NavigationLink {
+                        AddConferenceView { conference in
+                            confVM.addConference(newConference: conference)
+                        }
                     } label: {
                         Image(systemName: "plus")
                             .font(.title.bold())
@@ -43,6 +43,9 @@ struct MainView: View {
                             .padding(.trailing)
                     }
                 }
+            }
+            .toolbar {
+                EditButton()
             }
         }
     }
