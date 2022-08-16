@@ -19,6 +19,7 @@
 		9F9B226028A53604008A0E3E /* DocuemntsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225F28A53604008A0E3E /* DocuemntsDirectory.swift */; };
 		9F9B226328A80CED008A0E3E /* ConferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B226228A80CED008A0E3E /* ConferenceViewModel.swift */; };
 		9F9B226528AAA4E0008A0E3E /* AddConferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B226428AAA4E0008A0E3E /* AddConferenceView.swift */; };
+		9F9B226928AC1EF9008A0E3E /* AddAttendeeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B226828AC1EF9008A0E3E /* AddAttendeeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		9F9B225F28A53604008A0E3E /* DocuemntsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocuemntsDirectory.swift; sourceTree = "<group>"; };
 		9F9B226228A80CED008A0E3E /* ConferenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceViewModel.swift; sourceTree = "<group>"; };
 		9F9B226428AAA4E0008A0E3E /* AddConferenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConferenceView.swift; sourceTree = "<group>"; };
+		9F9B226828AC1EF9008A0E3E /* AddAttendeeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAttendeeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				9F06BCAB28A26A5E00264E23 /* MainView.swift */,
 				9F9B225B28A531C3008A0E3E /* ConferenceBriefView.swift */,
 				9F9B226428AAA4E0008A0E3E /* AddConferenceView.swift */,
+				9F9B226828AC1EF9008A0E3E /* AddAttendeeView.swift */,
 				9F9B225D28A53535008A0E3E /* ConferenceFullView.swift */,
 			);
 			path = Views;
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F9B226028A53604008A0E3E /* DocuemntsDirectory.swift in Sources */,
+				9F9B226928AC1EF9008A0E3E /* AddAttendeeView.swift in Sources */,
 				9F06BCB928A26AC600264E23 /* ImagePicker.swift in Sources */,
 				9F9B225E28A53535008A0E3E /* ConferenceFullView.swift in Sources */,
 				9F06BCAC28A26A5E00264E23 /* MainView.swift in Sources */,

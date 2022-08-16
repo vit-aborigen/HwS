@@ -9,12 +9,13 @@ import SwiftUI
 
 struct AddConferenceView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+    @State private var showAddAttendees = false
+
     @State private var conferenceName = ""
     @State private var conferencePlace = ""
     @State private var conferenceDate = Date.now
     @State private var conferenceAttendees = [User]()
-    
+
     let addHandler: (Conference) -> Void
 
     var body: some View {
@@ -30,6 +31,15 @@ struct AddConferenceView: View {
                 .pickerStyle(.wheel)
 
             Section {
+                HStack {
+                    Button {
+                        showAddAttendees = true
+                    } label: {
+                        Text("Add attendee")
+                    }
+                }
+                .frame(minWidth: .none, maxWidth: .infinity)
+                
                 ForEach(conferenceAttendees, id: \.self) { user in
                     Text(user.fullName)
                 }
@@ -48,11 +58,16 @@ struct AddConferenceView: View {
                 Text("Save")
             }
         }
+        .sheet(isPresented: $showAddAttendees) {
+            AddAttendeeView { user in
+                conferenceAttendees.append(user)
+            }
+        }
     }
 }
 
 struct AddConferenceView_Previews: PreviewProvider {
     static var previews: some View {
-        AddConferenceView(addHandler: { _ in } )
+        AddConferenceView(addHandler: { _ in })
     }
 }
