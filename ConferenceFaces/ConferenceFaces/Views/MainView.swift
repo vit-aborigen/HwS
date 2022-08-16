@@ -16,7 +16,9 @@ struct MainView: View {
                 List {
                     ForEach(confVM.conferences, id: \.id) { conference in
                         NavigationLink {
-                            
+                            AddConferenceView { updatedConference in
+                                confVM.updateConference(oldConference: conference, newConference: updatedConference)
+                            }
                         } label: {
                             ConferenceBriefView(conf: conference)
                         }

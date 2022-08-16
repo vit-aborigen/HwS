@@ -47,7 +47,7 @@ struct AddConferenceView: View {
                 Text("Attendees")
             }
         }
-        .navigationTitle("Add new conference")
+        .navigationTitle("Conference details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             Button {

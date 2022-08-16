@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ConferenceBriefView: View {
-    @State private var showDetails = false
     var conf: Conference
     
     var body: some View {
@@ -29,12 +28,6 @@ struct ConferenceBriefView: View {
                 .foregroundColor(.white)
                 .background(.blue)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-        }
-        .onTapGesture {
-            showDetails = true
-        }
-        .sheet(isPresented: $showDetails) {
-            ConferenceFullView()
         }
     }
 }

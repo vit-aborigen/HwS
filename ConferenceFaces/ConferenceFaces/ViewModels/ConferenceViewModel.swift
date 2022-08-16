@@ -8,7 +8,7 @@
 import Foundation
 
 extension MainView {
-    @MainActor class ConferenceViewModel: ObservableObject {
+    class ConferenceViewModel: ObservableObject {
         @Published private(set) var conferences: [Conference]
         let savePath = FileManager.documentsDirectory.appendingPathComponent("My conferences")
 
@@ -31,9 +31,10 @@ extension MainView {
             saveData()
         }
 
-        func updateConference(conference: Conference) {
-            // 2do: find conference and update it
-
+        func updateConference(oldConference: Conference, newConference: Conference) {
+            if let idx = conferences.firstIndex(of: oldConference) {
+                conferences[idx] = newConference
+            }
             saveData()
         }
 
