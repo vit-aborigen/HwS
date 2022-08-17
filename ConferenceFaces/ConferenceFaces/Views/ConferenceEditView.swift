@@ -7,16 +7,27 @@
 
 import SwiftUI
 
-struct AddConferenceView: View {
+struct ConferenceEditView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showAddAttendees = false
 
-    @State private var conferenceName = ""
-    @State private var conferencePlace = ""
-    @State private var conferenceDate = Date.now
-    @State private var conferenceAttendees = [User]()
+    @State private var conferenceName: String
+    @State private var conferencePlace: String
+    @State private var conferenceDate: Date
+    @State private var conferenceAttendees: [User]
 
     let addHandler: (Conference) -> Void
+    var conference: Conference?
+    
+    init(conference: Conference? = nil, trailingConference: @escaping (Conference) -> Void) {
+        self.conference = conference
+        self.addHandler = trailingConference
+        
+        self._conferenceName = State(initialValue: conference?.name ?? "")
+        self._conferencePlace = State(initialValue: conference?.place ?? "")
+        self._conferenceDate = State(initialValue: conference?.date ?? Date.now)
+        self._conferenceAttendees = State(initialValue: conference?.attendees ?? [])
+    }
 
     var body: some View {
         Form {
@@ -39,7 +50,7 @@ struct AddConferenceView: View {
                     }
                 }
                 .frame(minWidth: .none, maxWidth: .infinity)
-                
+
                 ForEach(conferenceAttendees, id: \.self) { user in
                     Text(user.fullName)
                 }
@@ -68,6 +79,6 @@ struct AddConferenceView: View {
 
 struct AddConferenceView_Previews: PreviewProvider {
     static var previews: some View {
-        AddConferenceView(addHandler: { _ in })
+        ConferenceEditView(trailingConference: { _ in })
     }
 }
