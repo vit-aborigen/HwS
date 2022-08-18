@@ -70,7 +70,7 @@ struct ConferenceEditView: View {
             }
         }
         .sheet(isPresented: $showAddAttendees) {
-            AddAttendeeView { user in
+            AttendeeFullView { user in
                 conferenceAttendees.append(user)
             }
         }

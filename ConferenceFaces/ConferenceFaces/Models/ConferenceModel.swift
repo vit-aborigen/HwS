@@ -9,10 +9,10 @@ import Foundation
 
 struct Conference: Codable, Comparable, Identifiable {
     var id = UUID()
-    let name: String
-    let place: String
-    let date: Date
-    let attendees: Array<User>
+    var name: String
+    var place: String
+    var date: Date
+    var attendees: Array<User>
     
     static func < (lhs: Conference, rhs: Conference) -> Bool {
         lhs.name < rhs.name

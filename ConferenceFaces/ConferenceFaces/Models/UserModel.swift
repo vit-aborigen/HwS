@@ -10,7 +10,7 @@ import UIKit
 
 struct User: Codable, Comparable, Hashable, Identifiable {
     var id = UUID()
-    let fullName: String
+    var fullName: String
     var lastTimeMeet: Date?
 
     static func <(lhs: User, rhs: User) -> Bool {
@@ -19,6 +19,6 @@ struct User: Codable, Comparable, Hashable, Identifiable {
 }
 
 struct UserPhoto {
-    let userID: UUID
-    let photo: UIImage?
+    var userID: UUID
+    var photo: UIImage?
 }

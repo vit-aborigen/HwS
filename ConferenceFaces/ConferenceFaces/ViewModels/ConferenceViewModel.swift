@@ -37,6 +37,14 @@ extension MainView {
             }
             saveData()
         }
+        
+        func getAttendees(for conference: Conference) -> [User] {
+            conference.attendees
+        }
+        
+        func removeAttendee(in conference: Conference, at offset: IndexSet) {
+            
+        }
 
         func saveData() {
             do {
