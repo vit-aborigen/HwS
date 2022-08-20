@@ -14,11 +14,12 @@
 		9F06BCB928A26AC600264E23 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06BCB828A26AC600264E23 /* ImagePicker.swift */; };
 		9F32852028AE61B600D0FED7 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32851F28AE61B600D0FED7 /* UserViewModel.swift */; };
 		9F32852228AE61FE00D0FED7 /* AttendeeBriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852128AE61FE00D0FED7 /* AttendeeBriefView.swift */; };
+		9F32852628B0266900D0FED7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852528B0266900D0FED7 /* DataManager.swift */; };
 		9F9B225828A528F8008A0E3E /* ConferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225728A528F8008A0E3E /* ConferenceModel.swift */; };
 		9F9B225A28A52904008A0E3E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225928A52904008A0E3E /* UserModel.swift */; };
 		9F9B225C28A531C3008A0E3E /* ConferenceBriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225B28A531C3008A0E3E /* ConferenceBriefView.swift */; };
 		9F9B226028A53604008A0E3E /* DocuemntsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225F28A53604008A0E3E /* DocuemntsDirectory.swift */; };
-		9F9B226328A80CED008A0E3E /* ConferenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B226228A80CED008A0E3E /* ConferenceViewModel.swift */; };
+		9F9B226328A80CED008A0E3E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B226228A80CED008A0E3E /* AppState.swift */; };
 		9F9B226528AAA4E0008A0E3E /* ConferenceEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B226428AAA4E0008A0E3E /* ConferenceEditView.swift */; };
 		9F9B226928AC1EF9008A0E3E /* AttendeeFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B226828AC1EF9008A0E3E /* AttendeeFullView.swift */; };
 /* End PBXBuildFile section */
@@ -32,11 +33,12 @@
 		9F06BCB828A26AC600264E23 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		9F32851F28AE61B600D0FED7 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		9F32852128AE61FE00D0FED7 /* AttendeeBriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeBriefView.swift; sourceTree = "<group>"; };
+		9F32852528B0266900D0FED7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		9F9B225728A528F8008A0E3E /* ConferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceModel.swift; sourceTree = "<group>"; };
 		9F9B225928A52904008A0E3E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9F9B225B28A531C3008A0E3E /* ConferenceBriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceBriefView.swift; sourceTree = "<group>"; };
 		9F9B225F28A53604008A0E3E /* DocuemntsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocuemntsDirectory.swift; sourceTree = "<group>"; };
-		9F9B226228A80CED008A0E3E /* ConferenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceViewModel.swift; sourceTree = "<group>"; };
+		9F9B226228A80CED008A0E3E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		9F9B226428AAA4E0008A0E3E /* ConferenceEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceEditView.swift; sourceTree = "<group>"; };
 		9F9B226828AC1EF9008A0E3E /* AttendeeFullView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeFullView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 			children = (
 				9F9B225F28A53604008A0E3E /* DocuemntsDirectory.swift */,
 				9F06BCB828A26AC600264E23 /* ImagePicker.swift */,
+				9F32852528B0266900D0FED7 /* DataManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -123,7 +126,7 @@
 		9F9B226128A80CBA008A0E3E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				9F9B226228A80CED008A0E3E /* ConferenceViewModel.swift */,
+				9F9B226228A80CED008A0E3E /* AppState.swift */,
 				9F32851F28AE61B600D0FED7 /* UserViewModel.swift */,
 			);
 			path = ViewModels;
@@ -207,9 +210,10 @@
 				9F06BCAA28A26A5E00264E23 /* ConferenceFacesApp.swift in Sources */,
 				9F9B225A28A52904008A0E3E /* UserModel.swift in Sources */,
 				9F9B225828A528F8008A0E3E /* ConferenceModel.swift in Sources */,
-				9F9B226328A80CED008A0E3E /* ConferenceViewModel.swift in Sources */,
+				9F9B226328A80CED008A0E3E /* AppState.swift in Sources */,
 				9F9B226528AAA4E0008A0E3E /* ConferenceEditView.swift in Sources */,
 				9F9B225C28A531C3008A0E3E /* ConferenceBriefView.swift in Sources */,
+				9F32852628B0266900D0FED7 /* DataManager.swift in Sources */,
 				9F32852228AE61FE00D0FED7 /* AttendeeBriefView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

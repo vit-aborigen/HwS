@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var confVM = ConferenceViewModel()
+    @StateObject private var confVM = AppState()
 
     var body: some View {
         NavigationView {

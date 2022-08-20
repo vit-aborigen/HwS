@@ -34,7 +34,7 @@ struct AttendeeFullView: View {
                     
                     imageToShow?
                         .resizable()
-                        //.scaledToFit()
+                        .scaledToFill()
                         .clipShape(Circle())
                 }
                 .frame(width: UIScreen.main.bounds.width / 1.5)
