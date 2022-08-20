@@ -75,6 +75,12 @@ struct AttendeeFullView: View {
             .sheet(isPresented: $showImagePicker) {
                 ImagePicker(image: $userPhoto)
             }
+            .onChange(of: userPhoto) { _ in
+                if let userPhoto = userPhoto {
+                    imageToShow = Image(uiImage: userPhoto)
+                }
+                
+            }
         }
     }
 }

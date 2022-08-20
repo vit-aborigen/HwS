@@ -97,10 +97,10 @@
 		9F06BCB728A26AB300264E23 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9F32852528B0266900D0FED7 /* DataManager.swift */,
 				9F9B225F28A53604008A0E3E /* DocuemntsDirectory.swift */,
 				9F06BCB828A26AC600264E23 /* ImagePicker.swift */,
 				9F32852728B16CC500D0FED7 /* ImageSaver.swift */,
-				9F32852528B0266900D0FED7 /* DataManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

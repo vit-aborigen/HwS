@@ -9,5 +9,6 @@ import Foundation
 
 extension AttendeeBriefView {
     class userViewModel: ObservableObject {
+        
     }
 }
