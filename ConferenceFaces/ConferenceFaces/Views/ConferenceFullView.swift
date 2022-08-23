@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ConferenceEditView: View {
+struct ConferenceFullView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showAddAttendees = false
 
@@ -16,12 +16,12 @@ struct ConferenceEditView: View {
     @State private var conferenceDate: Date
     @State private var conferenceAttendees: [User]
 
-    let addHandler: (Conference) -> Void
+    let saveHandler: (Conference) -> Void
     var conference: Conference?
     
     init(conference: Conference? = nil, trailingConference: @escaping (Conference) -> Void) {
         self.conference = conference
-        self.addHandler = trailingConference
+        self.saveHandler = trailingConference
         
         self._conferenceName = State(initialValue: conference?.name ?? "")
         self._conferencePlace = State(initialValue: conference?.place ?? "")
@@ -52,7 +52,7 @@ struct ConferenceEditView: View {
                 .frame(minWidth: .none, maxWidth: .infinity)
 
                 ForEach(conferenceAttendees, id: \.self) { user in
-                    Text(user.fullName)
+                    AttendeeBriefView(attendee: user)
                 }
             } header: {
                 Text("Attendees")
@@ -63,7 +63,7 @@ struct ConferenceEditView: View {
         .toolbar {
             Button {
                 let newConference = Conference(name: conferenceName, place: conferencePlace, date: conferenceDate, attendees: conferenceAttendees)
-                addHandler(newConference)
+                saveHandler(newConference)
                 self.presentationMode.wrappedValue.dismiss()
             } label: {
                 Text("Save")
@@ -79,6 +79,6 @@ struct ConferenceEditView: View {
 
 struct AddConferenceView_Previews: PreviewProvider {
     static var previews: some View {
-        ConferenceEditView(trailingConference: { _ in })
+        ConferenceFullView(trailingConference: { _ in })
     }
 }

@@ -12,14 +12,8 @@ struct User: Codable, Comparable, Hashable, Identifiable {
     var id = UUID()
     var fullName: String
     var lastTimeMeet: Date?
-    var imageData: Data?
 
     static func <(lhs: User, rhs: User) -> Bool {
         lhs.fullName < rhs.fullName
     }
-}
-
-struct UserPhoto {
-    var userID: UUID
-    var photo: UIImage?
 }

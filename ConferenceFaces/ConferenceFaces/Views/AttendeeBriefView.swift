@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct AttendeeBriefView: View {
+    var attendee: User
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Image(systemName: "circle.fill")
+                .renderingMode(.template)
+                .fixedSize()
+                .foregroundColor(.yellow)
+
+            Text(attendee.fullName)
+                .font(.title2.weight(.semibold))
+            
+            Spacer()
+        }
     }
 }
 
 struct AttendeeBriefView_Previews: PreviewProvider {
     static var previews: some View {
-        AttendeeBriefView()
+        AttendeeBriefView(attendee: User(fullName: "test"))
     }
 }

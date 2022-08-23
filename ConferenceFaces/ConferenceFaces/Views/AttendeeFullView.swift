@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AttendeeFullView: View {
-    var onAdd: (User) -> Void
+    var editHandler: (User) -> Void
     @Environment(\.dismiss) var dismiss
 
     @State private var userName = ""
@@ -64,7 +64,7 @@ struct AttendeeFullView: View {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             let newUser = User(fullName: userName, lastTimeMeet: lastTimeMeet)
-                            onAdd(newUser)
+                            editHandler(newUser)
                             dismiss()
                         } label: {
                             Text("Save")
@@ -87,6 +87,6 @@ struct AttendeeFullView: View {
 
 struct AddAttendeeView_Previews: PreviewProvider {
     static var previews: some View {
-        AttendeeFullView(onAdd: { _ in })
+        AttendeeFullView(editHandler: { _ in })
     }
 }
