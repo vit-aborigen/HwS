@@ -12,7 +12,6 @@
 		9F06BCAE28A26A5F00264E23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F06BCAD28A26A5F00264E23 /* Assets.xcassets */; };
 		9F06BCB128A26A5F00264E23 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F06BCB028A26A5F00264E23 /* Preview Assets.xcassets */; };
 		9F06BCB928A26AC600264E23 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F06BCB828A26AC600264E23 /* ImagePicker.swift */; };
-		9F32852028AE61B600D0FED7 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32851F28AE61B600D0FED7 /* UserViewModel.swift */; };
 		9F32852228AE61FE00D0FED7 /* AttendeeBriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852128AE61FE00D0FED7 /* AttendeeBriefView.swift */; };
 		9F32852628B0266900D0FED7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852528B0266900D0FED7 /* DataManager.swift */; };
 		9F32852828B16CC500D0FED7 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852728B16CC500D0FED7 /* ImageSaver.swift */; };
@@ -32,7 +31,6 @@
 		9F06BCAD28A26A5F00264E23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F06BCB028A26A5F00264E23 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9F06BCB828A26AC600264E23 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		9F32851F28AE61B600D0FED7 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		9F32852128AE61FE00D0FED7 /* AttendeeBriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeBriefView.swift; sourceTree = "<group>"; };
 		9F32852528B0266900D0FED7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		9F32852728B16CC500D0FED7 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 			isa = PBXGroup;
 			children = (
 				9F9B226228A80CED008A0E3E /* AppState.swift */,
-				9F32851F28AE61B600D0FED7 /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -206,7 +203,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F9B226028A53604008A0E3E /* DocumentsDirectory.swift in Sources */,
-				9F32852028AE61B600D0FED7 /* UserViewModel.swift in Sources */,
 				9F9B226928AC1EF9008A0E3E /* AttendeeFullView.swift in Sources */,
 				9F32852828B16CC500D0FED7 /* ImageSaver.swift in Sources */,
 				9F06BCB928A26AC600264E23 /* ImagePicker.swift in Sources */,
@@ -350,6 +346,10 @@
 				DEVELOPMENT_TEAM = Z8X43A4TG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "We want to save user's photos here";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "May be this one";
+				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "Or this one";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to get access to your photos to work with new personas";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -380,6 +380,10 @@
 				DEVELOPMENT_TEAM = Z8X43A4TG9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "We want to save user's photos here";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "May be this one";
+				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "Or this one";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to get access to your photos to work with new personas";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -65,6 +65,9 @@ struct AttendeeFullView: View {
                         Button {
                             let newUser = User(fullName: userName, lastTimeMeet: lastTimeMeet)
                             editHandler(newUser)
+                            if let userPhoto = userPhoto {
+                                DataManager.shared.savePhoto(photo: userPhoto, for: newUser)
+                            }
                             dismiss()
                         } label: {
                             Text("Save")

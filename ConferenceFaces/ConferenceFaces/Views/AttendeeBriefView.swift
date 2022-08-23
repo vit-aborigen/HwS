@@ -9,12 +9,12 @@ import SwiftUI
 
 struct AttendeeBriefView: View {
     var attendee: User
+    
     var body: some View {
         HStack {
-            Image(systemName: "circle.fill")
-                .renderingMode(.template)
-                .fixedSize()
-                .foregroundColor(.yellow)
+            Image(uiImage: DataManager.shared.loadPhoto(for: attendee))
+                .resizable()
+                .scaledToFit()
 
             Text(attendee.fullName)
                 .font(.title2.weight(.semibold))

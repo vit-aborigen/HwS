@@ -8,25 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var testClass = Test(name: "")
-    @StateObject var myOrder: Order?
+    let image = UIImage(systemName: "questionmark.circle")!
 
     var body: some View {
-        NavigationView {
-            Form {
-                NavigationLink {
-                    NameView(testClass: testClass)
-                } label: {
-                    Text("Proceed to \(testClass.name)")
+        Image(uiImage: image)
+            .onTapGesture {
+                let savePath = FileManager.documentsDirectory
+                
+                if let data = image.jpegData(compressionQuality: 0.8) {
+                    let filename = savePath.appendingPathComponent("MyConferences\newImage.jpg")
+                    do {
+                        try data.write(to: filename)
+                    } catch {
+                        print("Failed to save image: \(error.localizedDescription)")
+                    }
+                }
             }
-            }
-        }
     }
 }
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+extension FileManager {
+    static var documentsDirectory: URL {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return path[0]
     }
 }
