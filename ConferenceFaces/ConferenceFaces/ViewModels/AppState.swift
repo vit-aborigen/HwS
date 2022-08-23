@@ -11,7 +11,7 @@ import SwiftUI
 extension MainView {
     class AppState: ObservableObject {
         @Published var conferences: [Conference]
-        var dataManager = DataManager()
+        var dataManager = DataManager.shared
         
         init() {
             conferences = dataManager.getData()

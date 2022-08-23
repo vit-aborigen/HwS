@@ -10,9 +10,11 @@ import SwiftUI
 
 class DataManager: ObservableObject {
     let savePath = FileManager.documentsDirectory.appendingPathComponent("My conferences")
+    
+    static let shared = DataManager()
     private var storage: [Conference]
     
-    init() {
+    private init() {
         do {
             let data = try Data(contentsOf: savePath)
             storage = try JSONDecoder().decode([Conference].self, from: data)
