@@ -12,16 +12,10 @@ class DataManager: ObservableObject {
     private var savePath = FileManager.documentsDirectory.appendingPathComponent("My Conferences")
     
     static let shared = DataManager()
-    private var storage: [Conference]
+    private var confStorage: [Conference]
+    private var userStorage: [User]
     
     private init() {
-        do {
-            let data = try Data(contentsOf: savePath.appendingPathComponent("conf_list.json"))
-            storage = try JSONDecoder().decode([Conference].self, from: data)
-        } catch {
-            storage = []
-        }
-        
         if !FileManager.default.fileExists(atPath: savePath.path) {
             do {
                 try FileManager.default.createDirectory(at: savePath, withIntermediateDirectories: true)
@@ -30,24 +24,52 @@ class DataManager: ObservableObject {
                 savePath = FileManager.documentsDirectory
             }
         }
+        
+        do {
+            let confData = try Data(contentsOf: savePath.appendingPathComponent("conf_list.json"))
+            let userData = try Data(contentsOf: savePath.appendingPathComponent("user_list.json"))
+            confStorage = try JSONDecoder().decode([Conference].self, from: confData)
+            userStorage = try JSONDecoder().decode([User].self, from: userData)
+        } catch {
+            confStorage = []
+            userStorage = []
+        }
     }
     
-    private func saveData() {
+    private func saveConferences() {
         do {
-            let data = try JSONEncoder().encode(storage)
-            try data.write(to: savePath.appendingPathComponent("conf_list.json"), options: [.atomicWrite, .completeFileProtection])
+            let confData = try JSONEncoder().encode(confStorage)
+            try confData.write(to: savePath.appendingPathComponent("conf_list.json"), options: [.atomicWrite, .completeFileProtection])
         } catch {
             print("Failed to store conferences", (error.localizedDescription))
         }
     }
     
-    func getData() -> [Conference] {
-        storage
+    private func saveUsers() {
+        do {
+            let userData = try JSONEncoder().encode(userStorage)
+            try userData.write(to: savePath.appendingPathComponent("user_list.json"), options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print("Failed to store users", (error.localizedDescription))
+        }
     }
     
-    func updateData(newData: [Conference]) {
-        storage = newData
-        saveData()
+    func getConferencesList() -> [Conference] {
+        confStorage
+    }
+    
+    func getUsersList() -> [User] {
+        userStorage
+    }
+    
+    func updateConferences(newData: [Conference]) {
+        confStorage = newData
+        saveConferences()
+    }
+    
+    func updateUsers(newData: [User]) {
+        userStorage = newData
+        saveUsers()
     }
     
     func savePhoto(photo: UIImage, for user: User) {

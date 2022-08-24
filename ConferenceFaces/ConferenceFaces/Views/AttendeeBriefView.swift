@@ -15,6 +15,7 @@ struct AttendeeBriefView: View {
             Image(uiImage: DataManager.shared.loadPhoto(for: attendee))
                 .resizable()
                 .scaledToFit()
+                .frame(width: UIScreen.main.bounds.width / 3)
 
             Text(attendee.fullName)
                 .font(.title2.weight(.semibold))
