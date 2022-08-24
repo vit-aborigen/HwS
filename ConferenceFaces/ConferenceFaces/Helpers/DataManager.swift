@@ -16,7 +16,7 @@ class DataManager: ObservableObject {
     
     private init() {
         do {
-            let data = try Data(contentsOf: savePath)
+            let data = try Data(contentsOf: savePath.appendingPathComponent("conf_list.json"))
             storage = try JSONDecoder().decode([Conference].self, from: data)
         } catch {
             storage = []
@@ -35,9 +35,9 @@ class DataManager: ObservableObject {
     private func saveData() {
         do {
             let data = try JSONEncoder().encode(storage)
-            try data.write(to: savePath, options: [.atomicWrite, .completeFileProtection])
+            try data.write(to: savePath.appendingPathComponent("conf_list.json"), options: [.atomicWrite, .completeFileProtection])
         } catch {
-            print("Failed to store conferences")
+            print("Failed to store conferences", (error.localizedDescription))
         }
     }
     
