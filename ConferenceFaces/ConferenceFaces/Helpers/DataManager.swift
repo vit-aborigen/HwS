@@ -83,11 +83,13 @@ class DataManager: ObservableObject {
         }
     }
     
-    func loadPhoto(for user: User) -> UIImage {
-        let filename = savePath.appendingPathComponent("\(user.id).jpg")
-        
-        if let image = UIImage(contentsOfFile: filename.path) {
-            return image
+    func loadPhoto(for user: User?) -> UIImage {
+        if let user = user {
+            let filename = savePath.appendingPathComponent("\(user.id).jpg")
+            
+            if let image = UIImage(contentsOfFile: filename.path) {
+                return image
+            }
         }
         return UIImage(systemName: "questionmark.circle")!
     }

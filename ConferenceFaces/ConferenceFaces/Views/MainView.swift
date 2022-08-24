@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct MainView: View {
-    @StateObject private var confVM = AppState()
+    @StateObject private var appState = AppState()
 
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(confVM.conferences, id: \.id) { conference in
+                    ForEach(appState.conferences, id: \.id) { conference in
                         NavigationLink {
                             ConferenceFullView (conference: conference) { updatedConference in
-                                confVM.updateConference(oldConference: conference, newConference: updatedConference)
+                                appState.updateConference(oldConference: conference, newConference: updatedConference)
                             }
                         } label: {
                             ConferenceBriefView(conf: conference)
                         }
                     }
-                    .onDelete(perform: confVM.removeConference)
+                    .onDelete(perform: appState.removeConference)
                 }
 
                 Spacer()
@@ -33,7 +33,7 @@ struct MainView: View {
 
                     NavigationLink {
                         ConferenceFullView { conference in
-                            confVM.addConference(newConference: conference)
+                            appState.addConference(newConference: conference)
                         }
                     } label: {
                         Image(systemName: "plus")

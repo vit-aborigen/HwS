@@ -10,13 +10,22 @@ import SwiftUI
 struct AttendeeFullView: View {
     var editHandler: (User) -> Void
     @Environment(\.dismiss) var dismiss
+    var attendee: User?
 
-    @State private var userName = ""
+    @State private var userName: String
     @State private var lastTimeMeet = Date.now
     
     @State private var imageToShow: Image? = nil
     @State private var userPhoto: UIImage? = nil
     @State private var showImagePicker = false
+    
+    init(attendee: User? = nil, editHandler: @escaping (User) -> Void) {
+        self.attendee = attendee
+        self.editHandler = editHandler
+        
+        self._userName = State(initialValue: attendee?.fullName ?? "")
+        self._userPhoto = State(initialValue: DataManager.shared.loadPhoto(for: attendee))
+    }
 
     var body: some View {
         NavigationView {
