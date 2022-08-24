@@ -50,9 +50,15 @@ struct ConferenceFullView: View {
                     }
                 }
                 .frame(minWidth: .none, maxWidth: .infinity)
-
-                ForEach(conferenceAttendees, id: \.self) { user in
-                    AttendeeBriefView(attendee: user)
+                
+                ForEach(conferenceAttendees.sorted { $0.fullName < $1.fullName }, id: \.self) { user in
+                    NavigationLink {
+                        AttendeeFullView(attendee: user) { updatedUser in
+                            print(updatedUser)
+                        }
+                    } label: {
+                        AttendeeBriefView(attendee: user)
+                    }
                 }
             } header: {
                 Text("Attendees")

@@ -31,6 +31,7 @@ class DataManager: ObservableObject {
             confStorage = try JSONDecoder().decode([Conference].self, from: confData)
             userStorage = try JSONDecoder().decode([User].self, from: userData)
         } catch {
+            print(error.localizedDescription)
             confStorage = []
             userStorage = []
         }

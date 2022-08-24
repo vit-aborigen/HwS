@@ -24,10 +24,20 @@ extension MainView {
             conferences.append(newConference)
             dataManager.updateConferences(newData: conferences)
         }
+        
+        func addUser(newUser: User) {
+            users.append(newUser)
+            dataManager.updateUsers(newData: users)
+        }
 
         func removeConference(at offset: IndexSet) {
             conferences.remove(atOffsets: offset)
             dataManager.updateConferences(newData: conferences)
+        }
+        
+        func removeUsers(at offset: IndexSet) {
+            users.remove(atOffsets: offset)
+            dataManager.updateUsers(newData: users)
         }
 
         func updateConference(oldConference: Conference, newConference: Conference) {
@@ -35,6 +45,13 @@ extension MainView {
                 conferences[idx] = newConference
             }
             dataManager.updateConferences(newData: conferences)
+        }
+        
+        func updateUsers(oldUser: User, newUser: User) {
+            if let idx = users.firstIndex(of: oldUser) {
+                users[idx] = newUser
+            }
+            dataManager.updateUsers(newData: users)
         }
     }
 }
