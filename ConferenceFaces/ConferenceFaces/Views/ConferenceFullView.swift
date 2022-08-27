@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ConferenceFullView: View {
     @Environment(\.presentationMode) var presentationMode
+    
     @State private var showAddAttendees = false
 
     @State private var conferenceName: String
