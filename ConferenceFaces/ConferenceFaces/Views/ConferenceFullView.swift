@@ -52,7 +52,7 @@ struct ConferenceFullView: View {
                 }
                 .frame(minWidth: .none, maxWidth: .infinity)
                 
-                ForEach(conferenceAttendees.sorted { $0.fullName < $1.fullName }, id: \.self) { user in
+                ForEach(conferenceAttendees.sorted { $0.fullName < $1.fullName }, id: \.id) { user in
                     NavigationLink {
                         AttendeeFullView(attendee: user) { updatedUser in
                             UserListVM.shared.updateUsers(oldUser: user, newUser: updatedUser)
