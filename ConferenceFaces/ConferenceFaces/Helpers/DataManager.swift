@@ -27,12 +27,15 @@ class DataManager: ObservableObject {
         
         do {
             let confData = try Data(contentsOf: savePath.appendingPathComponent("conf_list.json"))
-            let userData = try Data(contentsOf: savePath.appendingPathComponent("user_list.json"))
             confStorage = try JSONDecoder().decode([Conference].self, from: confData)
+        } catch {
+            confStorage = []
+        }
+        
+        do {
+            let userData = try Data(contentsOf: savePath.appendingPathComponent("user_list.json"))
             userStorage = try JSONDecoder().decode([User].self, from: userData)
         } catch {
-            print(error.localizedDescription)
-            confStorage = []
             userStorage = []
         }
     }

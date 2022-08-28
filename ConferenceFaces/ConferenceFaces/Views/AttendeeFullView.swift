@@ -14,15 +14,15 @@ struct AttendeeFullView: View {
 
     @State private var userName: String
     @State private var lastTimeMeet = Date.now
-    
+
     @State private var imageToShow: Image? = nil
     @State private var userPhoto: UIImage? = nil
     @State private var showImagePicker = false
-    
+
     init(attendee: User? = nil, editHandler: @escaping (User) -> Void) {
         self.attendee = attendee
         self.editHandler = editHandler
-        
+
         self._userName = State(initialValue: attendee?.fullName ?? "")
         self._userPhoto = State(initialValue: DataManager.shared.loadPhoto(for: attendee))
     }
@@ -34,17 +34,22 @@ struct AttendeeFullView: View {
                     Circle()
                         .trim(from: 0, to: 0.25)
                         .rotation(Angle(degrees: 45))
-                    
+
                     Circle()
                         .opacity(0.25)
-                    
+
                     Text("Tap to add photo")
                         .font(.title3)
-                    
+
                     imageToShow?
                         .resizable()
                         .scaledToFill()
                         .clipShape(Circle())
+                }
+                .onAppear {
+                    if let attendee = attendee {
+                        imageToShow = Image(uiImage: DataManager.shared.loadPhoto(for: attendee))
+                    }
                 }
                 .frame(width: UIScreen.main.bounds.width / 1.5)
                 .onTapGesture {
@@ -53,7 +58,7 @@ struct AttendeeFullView: View {
                         imageToShow = Image(uiImage: userPhoto)
                     }
                 }
-                
+
                 Form {
                     Section {
                         TextField("User name", text: $userName)
@@ -91,7 +96,6 @@ struct AttendeeFullView: View {
                 if let userPhoto = userPhoto {
                     imageToShow = Image(uiImage: userPhoto)
                 }
-                
             }
         }
     }
