@@ -70,7 +70,7 @@ struct AttendeeFullView: View {
                 
                 Toggle("Show map data", isOn: $showMapData)
                 
-                Text("123")
+                Text("Map View Placeholder")
                     .opacity(showMapData ? 1 : 0)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {

@@ -15,10 +15,13 @@
 		9F32852228AE61FE00D0FED7 /* AttendeeBriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852128AE61FE00D0FED7 /* AttendeeBriefView.swift */; };
 		9F32852628B0266900D0FED7 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852528B0266900D0FED7 /* DataManager.swift */; };
 		9F32852828B16CC500D0FED7 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852728B16CC500D0FED7 /* ImageSaver.swift */; };
-		9F44413E28BABA1600CD0321 /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44413D28BABA1600CD0321 /* UserListModel.swift */; };
+		9F44413E28BABA1600CD0321 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44413D28BABA1600CD0321 /* UserListViewModel.swift */; };
 		9F44414028BC05C300CD0321 /* KnownUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44413F28BC05C300CD0321 /* KnownUsersView.swift */; };
 		9F44414628BE07C700CD0321 /* UIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44414528BE07C700CD0321 /* UIImagePicker.swift */; };
 		9F44414828BE479300CD0321 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44414728BE479300CD0321 /* LocationFetcher.swift */; };
+		9F44414A28BE4CC100CD0321 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44414928BE4CC100CD0321 /* MapView.swift */; };
+		9F44414C28BE4D1600CD0321 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44414B28BE4D1600CD0321 /* MapViewModel.swift */; };
+		9F44414E28BE4F7B00CD0321 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44414D28BE4F7B00CD0321 /* LocationModel.swift */; };
 		9F9B225828A528F8008A0E3E /* ConferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225728A528F8008A0E3E /* ConferenceModel.swift */; };
 		9F9B225A28A52904008A0E3E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225928A52904008A0E3E /* UserModel.swift */; };
 		9F9B225C28A531C3008A0E3E /* ConferenceBriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225B28A531C3008A0E3E /* ConferenceBriefView.swift */; };
@@ -38,10 +41,13 @@
 		9F32852128AE61FE00D0FED7 /* AttendeeBriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendeeBriefView.swift; sourceTree = "<group>"; };
 		9F32852528B0266900D0FED7 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		9F32852728B16CC500D0FED7 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
-		9F44413D28BABA1600CD0321 /* UserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
+		9F44413D28BABA1600CD0321 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		9F44413F28BC05C300CD0321 /* KnownUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownUsersView.swift; sourceTree = "<group>"; };
 		9F44414528BE07C700CD0321 /* UIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePicker.swift; sourceTree = "<group>"; };
 		9F44414728BE479300CD0321 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		9F44414928BE4CC100CD0321 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		9F44414B28BE4D1600CD0321 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		9F44414D28BE4F7B00CD0321 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		9F9B225728A528F8008A0E3E /* ConferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceModel.swift; sourceTree = "<group>"; };
 		9F9B225928A52904008A0E3E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9F9B225B28A531C3008A0E3E /* ConferenceBriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceBriefView.swift; sourceTree = "<group>"; };
@@ -122,6 +128,7 @@
 				9F32852128AE61FE00D0FED7 /* AttendeeBriefView.swift */,
 				9F9B226828AC1EF9008A0E3E /* AttendeeFullView.swift */,
 				9F44413F28BC05C300CD0321 /* KnownUsersView.swift */,
+				9F44414928BE4CC100CD0321 /* MapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -131,6 +138,7 @@
 			children = (
 				9F9B225728A528F8008A0E3E /* ConferenceModel.swift */,
 				9F9B225928A52904008A0E3E /* UserModel.swift */,
+				9F44414D28BE4F7B00CD0321 /* LocationModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -139,7 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				9F9B226228A80CED008A0E3E /* AppState.swift */,
-				9F44413D28BABA1600CD0321 /* UserListModel.swift */,
+				9F44414B28BE4D1600CD0321 /* MapViewModel.swift */,
+				9F44413D28BABA1600CD0321 /* UserListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -221,15 +230,18 @@
 				9F06BCAC28A26A5E00264E23 /* MainView.swift in Sources */,
 				9F06BCAA28A26A5E00264E23 /* ConferenceFacesApp.swift in Sources */,
 				9F44414828BE479300CD0321 /* LocationFetcher.swift in Sources */,
+				9F44414A28BE4CC100CD0321 /* MapView.swift in Sources */,
+				9F44414E28BE4F7B00CD0321 /* LocationModel.swift in Sources */,
 				9F9B225A28A52904008A0E3E /* UserModel.swift in Sources */,
 				9F44414028BC05C300CD0321 /* KnownUsersView.swift in Sources */,
 				9F9B225828A528F8008A0E3E /* ConferenceModel.swift in Sources */,
+				9F44414C28BE4D1600CD0321 /* MapViewModel.swift in Sources */,
 				9F9B226328A80CED008A0E3E /* AppState.swift in Sources */,
 				9F9B226528AAA4E0008A0E3E /* ConferenceFullView.swift in Sources */,
 				9F9B225C28A531C3008A0E3E /* ConferenceBriefView.swift in Sources */,
 				9F32852628B0266900D0FED7 /* DataManager.swift in Sources */,
 				9F44414628BE07C700CD0321 /* UIImagePicker.swift in Sources */,
-				9F44413E28BABA1600CD0321 /* UserListModel.swift in Sources */,
+				9F44413E28BABA1600CD0321 /* UserListViewModel.swift in Sources */,
 				9F32852228AE61FE00D0FED7 /* AttendeeBriefView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
