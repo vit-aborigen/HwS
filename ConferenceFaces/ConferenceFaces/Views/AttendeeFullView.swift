@@ -90,8 +90,9 @@ struct AttendeeFullView: View {
                 }
             }
             .sheet(isPresented: $showImagePicker) {
-                UIImagePicker(image: $userPhoto, imageSource: .camera)
-                //ImagePicker(image: $userPhoto)
+                // Untestable camera
+                // UIImagePicker(image: $userPhoto, imageSource: .camera)
+                ImagePicker(image: $userPhoto)
             }
             .onChange(of: userPhoto) { _ in
                 if let userPhoto = userPhoto {
