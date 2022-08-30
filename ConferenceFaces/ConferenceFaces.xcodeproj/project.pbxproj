@@ -17,6 +17,7 @@
 		9F32852828B16CC500D0FED7 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F32852728B16CC500D0FED7 /* ImageSaver.swift */; };
 		9F44413E28BABA1600CD0321 /* UserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44413D28BABA1600CD0321 /* UserListModel.swift */; };
 		9F44414028BC05C300CD0321 /* KnownUsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44413F28BC05C300CD0321 /* KnownUsersView.swift */; };
+		9F44414628BE07C700CD0321 /* UIImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44414528BE07C700CD0321 /* UIImagePicker.swift */; };
 		9F9B225828A528F8008A0E3E /* ConferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225728A528F8008A0E3E /* ConferenceModel.swift */; };
 		9F9B225A28A52904008A0E3E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225928A52904008A0E3E /* UserModel.swift */; };
 		9F9B225C28A531C3008A0E3E /* ConferenceBriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9B225B28A531C3008A0E3E /* ConferenceBriefView.swift */; };
@@ -38,6 +39,7 @@
 		9F32852728B16CC500D0FED7 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		9F44413D28BABA1600CD0321 /* UserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListModel.swift; sourceTree = "<group>"; };
 		9F44413F28BC05C300CD0321 /* KnownUsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnownUsersView.swift; sourceTree = "<group>"; };
+		9F44414528BE07C700CD0321 /* UIImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImagePicker.swift; sourceTree = "<group>"; };
 		9F9B225728A528F8008A0E3E /* ConferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceModel.swift; sourceTree = "<group>"; };
 		9F9B225928A52904008A0E3E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9F9B225B28A531C3008A0E3E /* ConferenceBriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceBriefView.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				9F32852528B0266900D0FED7 /* DataManager.swift */,
 				9F9B225F28A53604008A0E3E /* DocumentsDirectory.swift */,
 				9F06BCB828A26AC600264E23 /* ImagePicker.swift */,
+				9F44414528BE07C700CD0321 /* UIImagePicker.swift */,
 				9F32852728B16CC500D0FED7 /* ImageSaver.swift */,
 			);
 			path = Helpers;
@@ -221,6 +224,7 @@
 				9F9B226528AAA4E0008A0E3E /* ConferenceFullView.swift in Sources */,
 				9F9B225C28A531C3008A0E3E /* ConferenceBriefView.swift in Sources */,
 				9F32852628B0266900D0FED7 /* DataManager.swift in Sources */,
+				9F44414628BE07C700CD0321 /* UIImagePicker.swift in Sources */,
 				9F44413E28BABA1600CD0321 /* UserListModel.swift in Sources */,
 				9F32852228AE61FE00D0FED7 /* AttendeeBriefView.swift in Sources */,
 			);
@@ -355,9 +359,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "We want to save user's photos here";
-				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "May be this one";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "Or this one";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To get pins on maps";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to get access to your photos to work with new personas";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -389,9 +395,11 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "We want to save user's photos here";
-				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "May be this one";
+				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "Or this one";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To get pins on maps";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to get access to your photos to work with new personas";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
