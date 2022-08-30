@@ -18,7 +18,8 @@ struct AttendeeFullView: View {
     @State private var imageToShow: Image? = nil
     @State private var userPhoto: UIImage? = nil
     @State private var showImagePicker = false
-
+    @State private var showMapData = false
+    
     init(attendee: User? = nil, editHandler: @escaping (User) -> Void) {
         self.attendee = attendee
         self.editHandler = editHandler
@@ -66,6 +67,11 @@ struct AttendeeFullView: View {
                         DatePicker("Last time meet", selection: $lastTimeMeet, displayedComponents: .date)
                     }
                 }
+                
+                Toggle("Show map data", isOn: $showMapData)
+                
+                Text("123")
+                    .opacity(showMapData ? 1 : 0)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button {
