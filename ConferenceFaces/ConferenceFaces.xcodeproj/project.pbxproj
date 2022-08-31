@@ -380,6 +380,7 @@
 				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "Or this one";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To get pins on maps";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To save conference's location";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to get access to your photos to work with new personas";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -416,6 +417,7 @@
 				INFOPLIST_KEY_NSFileProviderDomainUsageDescription = "";
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "Or this one";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To get pins on maps";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To save conference's location";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We want to get access to your photos to work with new personas";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

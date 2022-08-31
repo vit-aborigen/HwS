@@ -26,4 +26,5 @@ struct Conference: Codable, Comparable, Identifiable {
     static var example: Conference {
         Conference(name: "Test Conf", place: "Berlin", date: Date.now, attendees: [User(fullName: "Anton"), User(fullName: "Aza")])
     }
+    
 }

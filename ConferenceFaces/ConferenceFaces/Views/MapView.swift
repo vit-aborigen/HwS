@@ -10,9 +10,18 @@ import MapKit
 
 struct MapView: View {
     @StateObject var mapVM = MapViewModel()
+    var confLocation: CLLocationCoordinate2D?
+    var points = Array<Location>()
+    
+    init(location: CLLocationCoordinate2D?) {
+        if let location = location {
+            points.append(Location(id: UUID(), latitude: location.latitude, longitude: location.longitude))
+        }
+        print(points)
+    }
     
     var body: some View {
-        Map(coordinateRegion: $mapVM.mapRegion, annotationItems: [Location.example]) { location in
+        Map(coordinateRegion: $mapVM.mapRegion, annotationItems: points) { location in
             MapAnnotation(coordinate: location.coordinate) {
                 Image(systemName: "star.circle")
                     .resizable()
@@ -27,6 +36,6 @@ struct MapView: View {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView()
+        MapView(location: CLLocationCoordinate2D(latitude: 22.3, longitude: 22.2))
     }
 }
