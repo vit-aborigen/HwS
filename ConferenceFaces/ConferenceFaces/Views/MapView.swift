@@ -17,7 +17,6 @@ struct MapView: View {
         if let location = location {
             points.append(Location(id: UUID(), latitude: location.latitude, longitude: location.longitude))
         }
-        print(points)
     }
     
     var body: some View {
