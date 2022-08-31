@@ -8,11 +8,16 @@
 import Foundation
 
 struct Conference: Codable, Comparable, Identifiable {
+    static func == (lhs: Conference, rhs: Conference) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var id = UUID()
     var name: String
     var place: String
     var date: Date
     var attendees: Array<User>
+    var location: Location?
     
     static func < (lhs: Conference, rhs: Conference) -> Bool {
         lhs.name < rhs.name

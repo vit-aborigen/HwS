@@ -11,6 +11,7 @@ struct AttendeeFullView: View {
     var editHandler: (User) -> Void
     @Environment(\.dismiss) var dismiss
     var attendee: User?
+    let locationFetcher = LocationFetcher()
 
     @State private var userName: String
     @State private var lastTimeMeet = Date.now
@@ -70,7 +71,7 @@ struct AttendeeFullView: View {
                 
                 Toggle("Show map data", isOn: $showMapData)
                 
-                Text("Map View Placeholder")
+                MapView()
                     .opacity(showMapData ? 1 : 0)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
