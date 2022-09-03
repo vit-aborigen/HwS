@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9F44415C28C1361300CD0321 /* Hot_ProspectsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44415B28C1361300CD0321 /* Hot_ProspectsApp.swift */; };
-		9F44415E28C1361300CD0321 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44415D28C1361300CD0321 /* ContentView.swift */; };
+		9F44415E28C1361300CD0321 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44415D28C1361300CD0321 /* MainView.swift */; };
 		9F44416028C1361500CD0321 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F44415F28C1361500CD0321 /* Assets.xcassets */; };
 		9F44416328C1361500CD0321 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F44416228C1361500CD0321 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		9F44415828C1361300CD0321 /* Hot Prospects.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hot Prospects.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F44415B28C1361300CD0321 /* Hot_ProspectsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hot_ProspectsApp.swift; sourceTree = "<group>"; };
-		9F44415D28C1361300CD0321 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9F44415D28C1361300CD0321 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		9F44415F28C1361500CD0321 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F44416228C1361500CD0321 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				9F44415B28C1361300CD0321 /* Hot_ProspectsApp.swift */,
-				9F44415D28C1361300CD0321 /* ContentView.swift */,
+				9F44415D28C1361300CD0321 /* MainView.swift */,
 				9F44415F28C1361500CD0321 /* Assets.xcassets */,
 				9F44416128C1361500CD0321 /* Preview Content */,
 			);
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F44415E28C1361300CD0321 /* ContentView.swift in Sources */,
+				9F44415E28C1361300CD0321 /* MainView.swift in Sources */,
 				9F44415C28C1361300CD0321 /* Hot_ProspectsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
