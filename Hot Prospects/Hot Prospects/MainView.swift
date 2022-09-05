@@ -7,54 +7,31 @@
 
 import SwiftUI
 
-@MainActor
-class DelayedUpdater: ObservableObject {
-    var value: Int = 0 {
-        willSet {
-            objectWillChange.send()
-        }
-    }
-
-    init() {
-        for i in 1 ... 10 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)) {
-                self.value += 1
-            }
-        }
-    }
-}
-
 struct MainView: View {
-    // @StateObject var testObject = DelayedUpdater()
-    @State private var output = ""
-
-    func fetchData() async {
-        let fetchTask = Task { () -> String in
-            let url = URL(string: "https://hws.dev/readings.json")!
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let readings = try JSONDecoder().decode([Double].self, from: data)
-            return "Found \(readings.count) records"
-        }
-
-        let result = await fetchTask.result
-
-        do {
-            output = try result.get()
-        } catch {
-            switch result {
-                case .success(let str):
-                    output = str
-                case .failure(let error):
-                    output = "Error: \(error.localizedDescription)"
-            }
-        }
-    }
-
+    @State private var backgroundColor = Color.red
+    
     var body: some View {
-        Text(output)
-            .task {
-                await fetchData()
-            }
+        VStack {
+            Text("Hello")
+                .padding()
+                .background(backgroundColor)
+            
+            Text("Change color")
+                .padding()
+                .contextMenu {
+                    Button(role: .destructive) {
+                        backgroundColor = .red
+                    } label: {
+                        Label("Red", systemImage: "checkmark.circle.fill")
+                    }
+                    
+                    Button {
+                        backgroundColor = .yellow
+                    } label: {
+                        Label("Yellow", systemImage: "checkmark.circle.fill")
+                    }
+                }
+        }
     }
 }
 
