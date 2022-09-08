@@ -13,4 +13,9 @@ import SwiftUI
     init() {
         people = []
     }
+    
+    func toggle(_ prospect: Prospect) {
+        objectWillChange.send()
+        prospect.isContacted.toggle()
+    }
 }
