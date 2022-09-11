@@ -12,4 +12,5 @@ class Prospect: Identifiable, Codable {
     var name = "Anonymous"
     var email = ""
     var isContacted = false
+    var dateAdded = Date.now
 }
