@@ -10,16 +10,23 @@ import SwiftUI
 @MainActor class Prospects: ObservableObject {
     @Published private(set) var people: [Prospect]
     
-    let saveKey = "SavedData"
+    private var savePath = FileManager.documentsDirectory.appendingPathComponent("Hot Prospects")
     
     init() {
-        if let data = UserDefaults.standard.data(forKey: saveKey) {
-            if let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
-                people = decoded
-                return
+        if !FileManager.default.fileExists(atPath: savePath.path) {
+            do {
+                try FileManager.default.createDirectory(at: savePath, withIntermediateDirectories: true)
+            } catch {
+                print(error.localizedDescription)
             }
         }
-        people = []
+        
+        do {
+            let data = try Data(contentsOf: savePath.appendingPathComponent("prospects.json"))
+            people = try JSONDecoder().decode([Prospect].self, from: data)
+        } catch {
+            people = []
+        }
     }
     
     func toggle(_ prospect: Prospect) {
@@ -34,8 +41,11 @@ import SwiftUI
     }
     
     private func save() {
-        if let encoded = try? JSONEncoder().encode(people) {
-            UserDefaults.standard.set(encoded, forKey: saveKey)
+        do {
+            let data = try JSONEncoder().encode(people)
+            try data.write(to: savePath.appendingPathComponent("prospects.json"), options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print(savePath, error.localizedDescription)
         }
             
     }

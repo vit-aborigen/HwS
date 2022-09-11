@@ -16,7 +16,7 @@ struct ProspectsView: View {
 
     @EnvironmentObject var prospects: Prospects
     @State private var isShowingScanner = false
-    
+
     let filter: FilterType
 
     var body: some View {
@@ -29,53 +29,52 @@ struct ProspectsView: View {
                             .padding(.trailing, 5)
                             .foregroundColor(.red)
                             .opacity(prospect.isContacted ? 0 : 1)
-                        
+
                         VStack(alignment: .leading) {
                             Text(prospect.name)
                                 .font(.headline)
-                            
+
                             Text(prospect.email)
                                 .foregroundColor(.secondary)
                         }
                     }
-                        .swipeActions {
-                            if prospect.isContacted {
-                                Button {
-                                    prospects.toggle(prospect)
-                                } label: {
-                                    Label("Mark Uncontacted", systemImage: "person.crop.circle.badge.xmark")
-                                }
-                                .tint(.blue)
-                            } else {
-                                Button {
-                                    prospects.toggle(prospect)
-                                } label: {
-                                    Label("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark")
-                                }
-                                .tint(.green)
-                                
-                                Button {
-                                    addNotification(for: prospect)
-                                } label: {
-                                    Label("Remind me", systemImage: "bell")
-                                }
-                                .tint(.orange)
+                    .swipeActions {
+                        if prospect.isContacted {
+                            Button {
+                                prospects.toggle(prospect)
+                            } label: {
+                                Label("Mark Uncontacted", systemImage: "person.crop.circle.badge.xmark")
                             }
+                            .tint(.blue)
+                        } else {
+                            Button {
+                                prospects.toggle(prospect)
+                            } label: {
+                                Label("Mark Contacted", systemImage: "person.crop.circle.fill.badge.checkmark")
+                            }
+                            .tint(.green)
+
+                            Button {
+                                addNotification(for: prospect)
+                            } label: {
+                                Label("Remind me", systemImage: "bell")
+                            }
+                            .tint(.orange)
+                        }
                     }
-                    
                 }
             }
-                .navigationTitle(title)
-                .toolbar {
-                    Button {
-                        isShowingScanner = true
-                    } label: {
-                        Label("Scan", systemImage: "qrcode.viewfinder")
-                    }
+            .navigationTitle(title)
+            .toolbar {
+                Button {
+                    isShowingScanner = true
+                } label: {
+                    Label("Scan", systemImage: "qrcode.viewfinder")
                 }
-                .sheet(isPresented: $isShowingScanner) {
-                    CodeScannerView(codeTypes: [.qr], simulatedData: "Test person for a simulator\ntest@gmail.com", completion: handleScan)
-                }
+            }
+            .sheet(isPresented: $isShowingScanner) {
+                CodeScannerView(codeTypes: [.qr], simulatedData: "Test person for a simulator\ntest@gmail.com", completion: handleScan)
+            }
         }
     }
 
@@ -89,7 +88,7 @@ struct ProspectsView: View {
             return "Uncontacted People"
         }
     }
-    
+
     var filteredProspects: [Prospect] {
         switch filter {
         case .none:
@@ -100,15 +99,15 @@ struct ProspectsView: View {
             return prospects.people.filter { !$0.isContacted }
         }
     }
-    
+
     func handleScan(result: Result<ScanResult, ScanError>) {
         isShowingScanner = false
-        
+
         switch result {
         case .success(let result):
             let details = result.string.components(separatedBy: "\n")
             guard details.count == 2 else { return }
-            
+
             let person = Prospect()
             person.name = details[0]
             person.email = details[1]
@@ -117,7 +116,7 @@ struct ProspectsView: View {
             print(error.localizedDescription)
         }
     }
-    
+
     func addNotification(for prospect: Prospect) {
         let center = UNUserNotificationCenter.current()
 
@@ -135,11 +134,11 @@ struct ProspectsView: View {
             center.add(request)
         }
 
-        center.getNotificationSettings{ settings in
+        center.getNotificationSettings { settings in
             if settings.authorizationStatus == .authorized {
                 addRequest()
             } else {
-                center.requestAuthorization(options: [.sound, .badge, .alert]) { result, error in
+                center.requestAuthorization(options: [.sound, .badge, .alert]) { result, _ in
                     if result {
                         addRequest()
                     } else {
