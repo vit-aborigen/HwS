@@ -9,28 +9,20 @@ import CoreHaptics
 import SwiftUI
 
 struct MainView: View {
-    @State private var text = ""
-    @Environment(\.scenePhase) var scenePhase
-    
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+    @Environment(\.accessibilityDifferentiateWithoutColor) var diffWithoutColor
+
     var body: some View {
-        Text(text)
-            .onReceive(timer) { time in
-                text = time.description
+        HStack {
+            if diffWithoutColor {
+                Image(systemName: "checkmark.circle")
             }
-            .onChange(of: scenePhase) { newScenePhase in
-                switch newScenePhase {
-                case .active:
-                    print("Active")
-                case .background:
-                    print("Background")
-                case .inactive:
-                    print("Inactive")
-                @unknown default:
-                    print("Unknown")
-                }
-            }
+
+            Text("Success")
+        }
+        .padding()
+        .background(diffWithoutColor ? .black : .green)
+        .foregroundColor(.white)
+        .clipShape(Capsule())
     }
 }
 
