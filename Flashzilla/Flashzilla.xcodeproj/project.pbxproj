@@ -13,6 +13,8 @@
 		9F06619628CFA33B004F1857 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F06619528CFA33B004F1857 /* Preview Assets.xcassets */; };
 		9F76D5A128D4FAFF0067EA97 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76D5A028D4FAFF0067EA97 /* CardModel.swift */; };
 		9F76D5A328D4FC280067EA97 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76D5A228D4FC280067EA97 /* CardView.swift */; };
+		9F76D5A528D4FFCD0067EA97 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76D5A428D4FFCD0067EA97 /* AppViewModel.swift */; };
+		9F76D5A728D500B20067EA97 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F76D5A628D500B20067EA97 /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		9F06619528CFA33B004F1857 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9F76D5A028D4FAFF0067EA97 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		9F76D5A228D4FC280067EA97 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		9F76D5A428D4FFCD0067EA97 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		9F76D5A628D500B20067EA97 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +60,11 @@
 			isa = PBXGroup;
 			children = (
 				9F06618E28CFA33A004F1857 /* FlashzillaApp.swift */,
+				9F76D5A628D500B20067EA97 /* ViewExtension.swift */,
+				9F76D5A028D4FAFF0067EA97 /* CardModel.swift */,
+				9F76D5A428D4FFCD0067EA97 /* AppViewModel.swift */,
 				9F06619028CFA33A004F1857 /* MainView.swift */,
 				9F76D5A228D4FC280067EA97 /* CardView.swift */,
-				9F76D5A028D4FAFF0067EA97 /* CardModel.swift */,
 				9F06619228CFA33B004F1857 /* Assets.xcassets */,
 				9F06619428CFA33B004F1857 /* Preview Content */,
 			);
@@ -143,6 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F76D5A728D500B20067EA97 /* ViewExtension.swift in Sources */,
+				9F76D5A528D4FFCD0067EA97 /* AppViewModel.swift in Sources */,
 				9F06619128CFA33A004F1857 /* MainView.swift in Sources */,
 				9F06618F28CFA33A004F1857 /* FlashzillaApp.swift in Sources */,
 				9F76D5A328D4FC280067EA97 /* CardView.swift in Sources */,

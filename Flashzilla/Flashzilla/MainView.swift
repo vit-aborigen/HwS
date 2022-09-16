@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var appState = AppState()
+    
     var body: some View {
-        CardView(card: Card.test)
+        ZStack {
+            LinearGradient(colors: [.red, .yellow, .orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+            
+            VStack {
+                ZStack {
+                    ForEach(0..<appState.cards.count, id: \.self) { offset in
+                        CardView(card: appState.cards[offset])
+                            .stacked(at: offset, in: appState.cards.count)
+                    }
+                }
+            }
+        }
     }
 }
 
