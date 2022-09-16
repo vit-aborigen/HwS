@@ -18,7 +18,9 @@ struct MainView: View {
             VStack {
                 ZStack {
                     ForEach(0..<appState.cards.count, id: \.self) { offset in
-                        CardView(card: appState.cards[offset])
+                        CardView(card: appState.cards[offset]) {
+                            appState.removeCard(at: offset)
+                        }
                             .stacked(at: offset, in: appState.cards.count)
                     }
                 }
