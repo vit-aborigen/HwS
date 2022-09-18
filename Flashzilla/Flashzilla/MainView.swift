@@ -11,9 +11,7 @@ struct MainView: View {
     @ObservedObject var appState = AppState()
     @Environment(\.accessibilityDifferentiateWithoutColor) var diffWithoutColor
     @Environment(\.scenePhase) var scenePhase
-    
-    @State private var isAppActive = true
-    @State private var timeRemaining = 100
+
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -22,16 +20,14 @@ struct MainView: View {
                 .ignoresSafeArea()
 
             VStack {
-                Text("Time: \(timeRemaining)")
+                Text("Time: \(appState.timeRemaining)")
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .padding(.horizontal, 20)
                     .padding(.vertical, 5)
                     .background(.black.opacity(0.75))
                     .clipShape(Capsule())
-                
-                
-                
+
                 ZStack {
                     ForEach(0 ..< appState.cards.count, id: \.self) { offset in
                         CardView(card: appState.cards[offset]) {
@@ -39,6 +35,15 @@ struct MainView: View {
                         }
                         .stacked(at: offset, in: appState.cards.count)
                     }
+                }
+                .allowsHitTesting(appState.timeRemaining > 0)
+                
+                if appState.cards.isEmpty {
+                    Button("Start Again", action: appState.resetCards)
+                        .padding()
+                        .background(.white)
+                        .foregroundColor(.black)
+                        .clipShape(Capsule())
                 }
             }
 
@@ -65,16 +70,18 @@ struct MainView: View {
         }
         .onChange(of: scenePhase, perform: { newValue in
             if newValue == .active {
-                isAppActive = true
+                if !appState.cards.isEmpty {
+                    appState.isAppActive = true
+                }
             } else {
-                isAppActive = false
+                appState.isAppActive = false
             }
         })
-        .onReceive(timer) { time in
-            guard isAppActive else { return }
-            
-            if timeRemaining > 0 {
-                timeRemaining -= 1
+        .onReceive(timer) { _ in
+            guard appState.isAppActive else { return }
+
+            if appState.timeRemaining > 0 {
+                appState.decreaseTimer()
             }
         }
     }
