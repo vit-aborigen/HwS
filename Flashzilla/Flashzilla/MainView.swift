@@ -10,6 +10,11 @@ import SwiftUI
 struct MainView: View {
     @ObservedObject var appState = AppState()
     @Environment(\.accessibilityDifferentiateWithoutColor) var diffWithoutColor
+    @Environment(\.scenePhase) var scenePhase
+    
+    @State private var isAppActive = true
+    @State private var timeRemaining = 100
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         ZStack {
@@ -17,6 +22,16 @@ struct MainView: View {
                 .ignoresSafeArea()
 
             VStack {
+                Text("Time: \(timeRemaining)")
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 5)
+                    .background(.black.opacity(0.75))
+                    .clipShape(Capsule())
+                
+                
+                
                 ZStack {
                     ForEach(0 ..< appState.cards.count, id: \.self) { offset in
                         CardView(card: appState.cards[offset]) {
@@ -46,6 +61,20 @@ struct MainView: View {
                     .font(.largeTitle)
                     .padding()
                 }
+            }
+        }
+        .onChange(of: scenePhase, perform: { newValue in
+            if newValue == .active {
+                isAppActive = true
+            } else {
+                isAppActive = false
+            }
+        })
+        .onReceive(timer) { time in
+            guard isAppActive else { return }
+            
+            if timeRemaining > 0 {
+                timeRemaining -= 1
             }
         }
     }
