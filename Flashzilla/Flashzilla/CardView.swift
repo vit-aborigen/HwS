@@ -12,6 +12,8 @@ struct CardView: View {
 
     let card: Card
     var removal: (() -> Void)? = nil
+    
+    @State private var feedback = UINotificationFeedbackGenerator()
 
     @State private var isShowingAnswer = false
     @State private var offset = CGSize.zero
@@ -53,9 +55,16 @@ struct CardView: View {
             DragGesture()
                 .onChanged { gesture in
                     offset = gesture.translation
+                    feedback.prepare()
                 }
                 .onEnded { gesture in
                     if abs(gesture.translation.width) > 100 {
+                        if gesture.translation.width > 0 {
+                            feedback.notificationOccurred(.success)
+                        } else {
+                            feedback.notificationOccurred(.error)
+                        }
+                        
                         removal?()
                     } else {
                         withAnimation {
