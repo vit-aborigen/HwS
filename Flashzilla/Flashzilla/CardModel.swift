@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Card {
+struct Card: Codable {
     var question: String
     var answer: String
     

@@ -11,8 +11,10 @@ struct MainView: View {
     @ObservedObject var appState = AppState()
     @Environment(\.accessibilityDifferentiateWithoutColor) var diffWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
-    
+
     @Environment(\.scenePhase) var scenePhase
+
+    @State private var showEditScreen = false
 
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -50,6 +52,26 @@ struct MainView: View {
                         .clipShape(Capsule())
                 }
             }
+
+            VStack {
+                HStack {
+                    Spacer()
+
+                    Button {
+                        showEditScreen = true
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .padding()
+                            .background(.black.opacity(0.7))
+                            .clipShape(Circle())
+                    }
+                }
+
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .padding()
 
             if diffWithoutColor || voiceOverEnabled {
                 VStack {
@@ -105,6 +127,9 @@ struct MainView: View {
             if appState.timeRemaining > 0 {
                 appState.decreaseTimer()
             }
+        }
+        .sheet(isPresented: $showEditScreen) {
+            EditCardsView()
         }
     }
 }
