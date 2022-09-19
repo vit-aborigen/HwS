@@ -10,6 +10,8 @@ import SwiftUI
 struct MainView: View {
     @ObservedObject var appState = AppState()
     @Environment(\.accessibilityDifferentiateWithoutColor) var diffWithoutColor
+    @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
+    
     @Environment(\.scenePhase) var scenePhase
 
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -39,7 +41,7 @@ struct MainView: View {
                     }
                 }
                 .allowsHitTesting(appState.timeRemaining > 0)
-                
+
                 if appState.cards.isEmpty {
                     Button("Start Again", action: appState.resetCards)
                         .padding()
@@ -49,20 +51,38 @@ struct MainView: View {
                 }
             }
 
-            if diffWithoutColor {
+            if diffWithoutColor || voiceOverEnabled {
                 VStack {
                     Spacer()
 
                     HStack {
-                        Image(systemName: "xmark.circle")
-                            .padding()
-                            .background(.black.opacity(0.7))
-                            .clipShape(Circle())
+                        Button {
+                            withAnimation {
+                                appState.removeCard(at: appState.cards.count - 1)
+                            }
+                        } label: {
+                            Image(systemName: "xmark.circle")
+                                .padding()
+                                .background(.black.opacity(0.7))
+                                .clipShape(Circle())
+                        }
+                        .accessibilityLabel("Wrong")
+                        .accessibilityHint("Mark answer as incorrect")
+
                         Spacer()
-                        Image(systemName: "checkmark.circle")
-                            .padding()
-                            .background(.black.opacity(0.7))
-                            .clipShape(Circle())
+
+                        Button {
+                            withAnimation {
+                                appState.removeCard(at: appState.cards.count - 1)
+                            }
+                        } label: {
+                            Image(systemName: "checkmark.circle")
+                                .padding()
+                                .background(.black.opacity(0.7))
+                                .clipShape(Circle())
+                        }
+                        .accessibilityLabel("Correct")
+                        .accessibilityHint("Mark answer as correct")
                     }
                     .foregroundColor(.white)
                     .font(.largeTitle)

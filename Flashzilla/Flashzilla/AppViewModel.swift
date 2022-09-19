@@ -20,7 +20,7 @@ extension MainView {
         var isAppActive = true
         
         func removeCard(at index: Int) {
-            guard index < cards.count else { return }
+            guard index < cards.count && index >= 0 else { return }
             
             cards.remove(at: index)
             
