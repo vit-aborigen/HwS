@@ -9,10 +9,11 @@ import SwiftUI
 
 struct CardView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var diffWithoutColor
+    @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
 
     let card: Card
     var removal: (() -> Void)? = nil
-    
+
     @State private var feedback = UINotificationFeedbackGenerator()
 
     @State private var isShowingAnswer = false
@@ -22,26 +23,32 @@ struct CardView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 25, style: .continuous)
                 .fill(diffWithoutColor
-                      ? .white
-                      : .white.opacity(1 - Double(abs(offset.width / 50)))
+                    ? .white
+                    : .white.opacity(1 - Double(abs(offset.width / 50)))
                 )
                 .background(
                     diffWithoutColor
-                    ? nil
-                    : RoundedRectangle(cornerRadius: 25, style: .continuous)
+                        ? nil
+                        : RoundedRectangle(cornerRadius: 25, style: .continuous)
                         .fill(offset.width > 0 ? .green : .red)
                 )
                 .shadow(radius: 10)
 
             VStack {
-                Text(card.question)
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
+                if voiceOverEnabled {
+                    Text(isShowingAnswer ? card.answer : card.question)
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                } else {
+                    Text(card.question)
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
 
-                if isShowingAnswer {
-                    Text(card.answer)
-                        .font(.title)
-                        .foregroundColor(.gray)
+                    if isShowingAnswer {
+                        Text(card.answer)
+                            .font(.title)
+                            .foregroundColor(.gray)
+                    }
                 }
             }
             .padding(20)
@@ -50,6 +57,7 @@ struct CardView: View {
         .frame(width: 450, height: 250)
         .rotationEffect(.degrees(Double(offset.width / 5)))
         .offset(x: offset.width * 5, y: 0)
+        .accessibilityAddTraits(.isButton)
         .opacity(2 - Double(abs(offset.width / 50)))
         .gesture(
             DragGesture()
@@ -64,7 +72,7 @@ struct CardView: View {
                         } else {
                             feedback.notificationOccurred(.error)
                         }
-                        
+
                         removal?()
                     } else {
                         withAnimation {

@@ -34,6 +34,8 @@ struct MainView: View {
                             appState.removeCard(at: offset)
                         }
                         .stacked(at: offset, in: appState.cards.count)
+                        .allowsHitTesting(offset == appState.cards.count - 1)
+                        .accessibilityHidden(offset < appState.cards.count - 1)
                     }
                 }
                 .allowsHitTesting(appState.timeRemaining > 0)
