@@ -31,6 +31,7 @@ struct EditCardsView: View {
                     Text("Done")
                 }
             }
+            .listStyle(.grouped)
         }
     }
 }
