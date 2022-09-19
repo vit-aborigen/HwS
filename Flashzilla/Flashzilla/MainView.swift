@@ -128,8 +128,11 @@ struct MainView: View {
                 appState.decreaseTimer()
             }
         }
+        .onAppear(perform: appState.loadData)
         .sheet(isPresented: $showEditScreen) {
-            EditCardsView()
+            EditCardsView(cards: appState.cards) { newCards in
+                appState.addCards(newCards: newCards)
+            }
         }
     }
 }

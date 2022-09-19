@@ -10,7 +10,7 @@ import SwiftUI
 extension MainView {
     class AppState: ObservableObject {
         private var savePath = FileManager.documentsDirectory.appendingPathComponent("FlashZilla")
-        @Published var cards: [Card]
+        @Published var cards: [Card] = []
         
         private(set) var timeRemaining = 100 {
             willSet {
@@ -20,22 +20,12 @@ extension MainView {
         
         var isAppActive = true
         
-        init() {
-            if !FileManager.default.fileExists(atPath: savePath.absoluteString) {
-                do {
-                    try FileManager.default.createDirectory(at: savePath, withIntermediateDirectories: true)
-                } catch {
-                    print(error.localizedDescription)
-                    savePath = FileManager.documentsDirectory
-                }
-            }
-            
+        func loadData() {
             do {
-                let data = try Data(contentsOf: savePath.appendingPathExtension("cards.json"))
+                let data = try Data(contentsOf: savePath.appendingPathComponent("cards.json"))
                 cards = try JSONDecoder().decode([Card].self, from: data)
             } catch {
-                print("Failed to load data")
-                cards = []
+                print("Failed to load data", error.localizedDescription)
             }
         }
         
@@ -48,8 +38,8 @@ extension MainView {
             }
         }
         
-        func addCard(question: String, answer: String) {
-            cards.append(Card(question: question, answer: answer))
+        func addCards(newCards: [Card]) {
+            cards += newCards
             saveData()
         }
         
@@ -61,14 +51,12 @@ extension MainView {
             if cards.isEmpty {
                 isAppActive = false
             }
-            
-            saveData()
         }
         
         func resetCards() {
-            cards = [Card](repeating: Card.test, count: 10)
             timeRemaining = 100
             isAppActive = true
+            loadData()
         }
         
         func decreaseTimer() {
