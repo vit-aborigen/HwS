@@ -45,11 +45,16 @@ struct MainView: View {
                 .allowsHitTesting(appState.timeRemaining > 0)
 
                 if appState.cards.isEmpty {
-                    Button("Start Again", action: appState.resetCards)
-                        .padding()
-                        .background(.white)
-                        .foregroundColor(.black)
-                        .clipShape(Capsule())
+                    Button {
+                        appState.resetCards()
+
+                    } label: {
+                        Text("Start again")
+                    }
+                    .padding()
+                    .background(.white)
+                    .foregroundColor(.black)
+                    .clipShape(Capsule())
                 }
             }
 
@@ -128,7 +133,11 @@ struct MainView: View {
                 appState.decreaseTimer()
             }
         }
-        .onAppear(perform: appState.loadData)
+        .onAppear {
+            DispatchQueue.main.async {
+                appState.loadData()
+            }
+        }
         .sheet(isPresented: $showEditScreen) {
             EditCardsView(cards: appState.cards) { newCards in
                 appState.addCards(newCards: newCards)

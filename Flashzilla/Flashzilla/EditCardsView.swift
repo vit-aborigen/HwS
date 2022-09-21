@@ -20,6 +20,7 @@ struct EditCardsView: View {
     init(cards: [Card], onSave: @escaping ([Card]) -> Void) {
         self.cards = cards
         self.onSave = onSave
+        _newCardsStorage = State(initialValue: cards)
     }
     
     var body: some View {
@@ -33,6 +34,8 @@ struct EditCardsView: View {
                     Button {
                         let card = Card(question: question, answer: answer)
                         newCardsStorage.append(card)
+                        question = ""
+                        answer = ""
                     } label: {
                         Text("Save card")
                     }
@@ -47,6 +50,9 @@ struct EditCardsView: View {
                             Text(card.answer)
                                 .foregroundColor(.secondary)
                         }
+                    }
+                    .onDelete { indexSet in
+                        newCardsStorage.remove(atOffsets: indexSet)
                     }
                 }
             }

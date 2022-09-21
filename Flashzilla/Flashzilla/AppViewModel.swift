@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension MainView {
-    class AppState: ObservableObject {
+    @MainActor class AppState: ObservableObject {
         private var savePath = FileManager.documentsDirectory.appendingPathComponent("FlashZilla")
         @Published var cards: [Card] = []
         
@@ -39,14 +39,18 @@ extension MainView {
         }
         
         func addCards(newCards: [Card]) {
-            cards += newCards
+            cards = newCards
             saveData()
         }
         
-        func removeCard(at index: Int) {
+        func removeCard(at index: Int, permanently: Bool = false) {
             guard index < cards.count && index >= 0 else { return }
             
             cards.remove(at: index)
+            
+            if permanently {
+                saveData()
+            }
             
             if cards.isEmpty {
                 isAppActive = false
