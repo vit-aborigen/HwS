@@ -12,7 +12,7 @@ struct CardView: View {
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
 
     let card: Card
-    var removal: (() -> Void)? = nil
+    var removal: ((Bool) -> Void)? = nil
 
     @State private var feedback = UINotificationFeedbackGenerator()
 
@@ -72,11 +72,12 @@ struct CardView: View {
                     if abs(gesture.translation.width) > 100 {
                         if gesture.translation.width > 0 {
                             feedback.notificationOccurred(.success)
+                            removal?(true)
+                            offset = .zero
                         } else {
                             feedback.notificationOccurred(.error)
+                            removal?(false)
                         }
-
-                        removal?()
                     } else {
                         withAnimation {
                             offset = CGSize.zero

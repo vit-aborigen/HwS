@@ -43,10 +43,14 @@ extension MainView {
             saveData()
         }
         
-        func removeCard(at index: Int, permanently: Bool = false) {
-            guard index < cards.count && index >= 0 else { return }
+        func removeCard(at index: Int, permanently: Bool = false, reprocessLater: Bool = false) {
+            guard index < cards.count, index >= 0 else { return }
             
-            cards.remove(at: index)
+            if reprocessLater {
+                cards.moveToTheEnd()
+            } else {
+                cards.remove(at: index)
+            }
             
             if permanently {
                 saveData()

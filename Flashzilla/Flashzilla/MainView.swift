@@ -33,9 +33,10 @@ struct MainView: View {
                     .clipShape(Capsule())
 
                 ZStack {
-                    ForEach(0 ..< appState.cards.count, id: \.self) { offset in
-                        CardView(card: appState.cards[offset]) {
-                            appState.removeCard(at: offset)
+                    ForEach(appState.cards, id: \.self) { card in
+                        let offset = appState.cards.firstIndex(of: card) ?? 0
+                        CardView(card: appState.cards[offset]) { reprocess in
+                            appState.removeCard(at: offset, reprocessLater: reprocess)
                         }
                         .stacked(at: offset, in: appState.cards.count)
                         .allowsHitTesting(offset == appState.cards.count - 1)
