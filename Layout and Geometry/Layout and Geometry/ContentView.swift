@@ -7,33 +7,41 @@
 
 import SwiftUI
 
-extension VerticalAlignment {
-    struct MidAccountAndName: AlignmentID {
-        static func defaultValue(in d: ViewDimensions) -> CGFloat {
-            d[.top]
+struct OuterView: View {
+    var body: some View {
+        VStack {
+            Text("Top")
+            InnerView()
+                .background(.green)
+            Text("Bottom")
         }
     }
+}
 
-    static let midAccountAndName = VerticalAlignment(MidAccountAndName.self)
+struct InnerView: View {
+    var body: some View {
+        HStack {
+            Text("Left")
+            GeometryReader { geo in
+                Text("Center")
+                    .background(.blue)
+                    .onTapGesture {
+                        print("Global center: \(geo.frame(in: .global).midX) x \(geo.frame(in: .global).midY)")
+                        print("Custom center: \(geo.frame(in: .named("Custom")).midX) x \(geo.frame(in: .named("Custom")).midY)")
+                        print("Local center: \(geo.frame(in: .local).midX) x \(geo.frame(in: .local).midY)")
+                    }
+            }
+            .background(.orange)
+            Text("Right")
+        }
+    }
 }
 
 struct ContentView: View {
     var body: some View {
-        HStack(alignment: .lastTextBaseline) {
-            Text("Live")
-                .font(.caption)
-                .alignmentGuide(.midAccountAndName) { d in d[VerticalAlignment.center] }
-            
-            
-            Text("long")
-            Text("and")
-                .font(.title)
-                .alignmentGuide(.midAccountAndName) { d in d[VerticalAlignment.center] }
-            
-            Text("prosper")
-                .font(.largeTitle)
-        }
-        .background(.yellow)
+        OuterView()
+            .background(.red)
+            .coordinateSpace(name: "Custom")
     }
 }
 
