@@ -26,9 +26,9 @@ struct InnerView: View {
                 Text("Center")
                     .background(.blue)
                     .onTapGesture {
-                        print("Global center: \(geo.frame(in: .global).midX) x \(geo.frame(in: .global).midY)")
-                        print("Custom center: \(geo.frame(in: .named("Custom")).midX) x \(geo.frame(in: .named("Custom")).midY)")
-                        print("Local center: \(geo.frame(in: .local).midX) x \(geo.frame(in: .local).midY)")
+                        print("Global: \(geo.frame(in: .global).midX) x \(geo.frame(in: .global).midY)")
+                        print("Local: \(geo.frame(in: .local).midX) x \(geo.frame(in: .local).midY)")
+                        print("Custom: \(geo.frame(in: .named("Custom")).midX) x \(geo.frame(in: .named("Custom")).midY)")
                     }
             }
             .background(.orange)
@@ -39,9 +39,21 @@ struct InnerView: View {
 
 struct ContentView: View {
     var body: some View {
-        OuterView()
-            .background(.red)
-            .coordinateSpace(name: "Custom")
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 0) {
+                ForEach(1..<20) { num in
+                    GeometryReader { geo in
+                        Text("Number \(num)")
+                            .font(.largeTitle)
+                            .padding()
+                            .background(.red)
+                            .rotation3DEffect(.degrees(-geo.frame(in: .global).minX) / 8, axis: (x: 0, y: 1, z: 0))
+                            .frame(width: 200, height: 200)
+                    }
+                    .frame(width: 200, height: 200)
+                }
+            }
+        }
     }
 }
 
