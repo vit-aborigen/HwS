@@ -21,8 +21,9 @@ struct ContentView: View {
                             .background(colors[index % 7])
                             .rotation3DEffect(.degrees(geo.frame(in: .global).minY - fullView.size.height / 2) / 5, axis: (x: 0, y: 1, z: 0))
                             .opacity(geo.frame(in: .global).minY / 200 )
+                            .scaleEffect(max(0.5, geo.frame(in: .global).minY / fullView.size.height * 2))
                             .onTapGesture {
-                                print(geo.frame(in: .global).minY)
+                                print(geo.frame(in: .global).minY / fullView.size.height * 2)
                             }
                     }
                     .frame(height: 40)
