@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Dice {
+class Dice: Codable {
     var id: UUID
     let sides: Int
     var value: Int

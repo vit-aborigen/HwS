@@ -9,10 +9,9 @@ import SwiftUI
 
 struct DiceView: View {
     let dice: Dice
-    let text = "123"
     
     var body: some View {
-        Text(text)
+        Text("\(dice.value)")
             .font(.headline.weight(Font.Weight.heavy))
             .padding()
             .frame(width: 75, height: 75)
