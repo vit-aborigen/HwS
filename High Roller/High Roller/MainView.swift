@@ -10,9 +10,9 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         HStack {
-            DiceView()
-            DiceView()
-            DiceView()
+            DiceView(dice: Dice(sides: 556))
+            DiceView(dice: Dice(sides: 25423456))
+            DiceView(dice: Dice(sides: 62345234))
         }
     }
 }
