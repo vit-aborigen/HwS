@@ -22,10 +22,6 @@ class AppState: ObservableObject {
         dices = []
     }
     
-    func returnSum() -> Int {
-        dices.reduce(0) { $0 + $1.value }
-    }
-    
     private func generateDices() {
         for _ in 1...numberOfDices {
             dices.append(Dice(sides: numberOfSides))
