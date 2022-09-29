@@ -8,11 +8,47 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var appState = AppState()
+
+    @State private var numberOfDices = 1
+    @State private var numberOfSides = 6
+
     var body: some View {
-        HStack {
-            DiceView(dice: Dice(sides: 556))
-            DiceView(dice: Dice(sides: 25423456))
-            DiceView(dice: Dice(sides: 62345234))
+        NavigationView {
+            VStack {
+                Stepper("Number of dices: \(numberOfDices)", value: $numberOfDices, in: 1...20)
+                Stepper("Number of sides: \(numberOfSides)", value: $numberOfSides, in: 1...20)
+
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(appState.dices, id: \.id) { dice in
+                            DiceView(dice: dice)
+                        }
+                    }
+                }
+
+                VStack {
+                    //Text("Your score is \(appState.returnSum())")
+                    //    .font(.headline)
+                    
+                    Text("High Score is")
+                }
+                
+
+                Spacer()
+
+                Button("Reroll") {
+                    appState.reroll(dices: numberOfDices, sides: numberOfSides)
+                }
+                .padding(10)
+                .background(.yellow)
+                .clipShape(RoundedRectangle(cornerRadius: 15))
+            }
+            .toolbar {
+                Button {} label: {
+                    Text("High scores")
+                }
+            }
         }
     }
 }

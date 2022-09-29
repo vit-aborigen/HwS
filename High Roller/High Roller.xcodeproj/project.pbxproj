@@ -17,6 +17,8 @@
 		9F1EB6F928E63E340096E871 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1EB6F828E63E340096E871 /* FileManager-DocumentsDirectory.swift */; };
 		9F1EB6FB28E63E7C0096E871 /* HighScoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1EB6FA28E63E7C0096E871 /* HighScoreModel.swift */; };
 		9F1EB6FD28E640110096E871 /* HighScoresVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1EB6FC28E640110096E871 /* HighScoresVM.swift */; };
+		9F1EB6FF28E6458E0096E871 /* HighScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1EB6FE28E6458E0096E871 /* HighScoresView.swift */; };
+		9F1EB70128E645F80096E871 /* SingleScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1EB70028E645F80096E871 /* SingleScoreView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		9F1EB6F828E63E340096E871 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FileManager-DocumentsDirectory.swift"; path = "../../BucketList/BucketList/FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		9F1EB6FA28E63E7C0096E871 /* HighScoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoreModel.swift; sourceTree = "<group>"; };
 		9F1EB6FC28E640110096E871 /* HighScoresVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresVM.swift; sourceTree = "<group>"; };
+		9F1EB6FE28E6458E0096E871 /* HighScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighScoresView.swift; sourceTree = "<group>"; };
+		9F1EB70028E645F80096E871 /* SingleScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleScoreView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 				9F1EB6F628E61BE70096E871 /* HighRollerVM.swift */,
 				9F1EB6FC28E640110096E871 /* HighScoresVM.swift */,
 				9F1EB6E628E4CF540096E871 /* MainView.swift */,
+				9F1EB6FE28E6458E0096E871 /* HighScoresView.swift */,
+				9F1EB70028E645F80096E871 /* SingleScoreView.swift */,
 				9F1EB6F228E5EB520096E871 /* DiceView.swift */,
 				9F1EB6E828E4CF550096E871 /* Assets.xcassets */,
 				9F1EB6EA28E4CF550096E871 /* Preview Content */,
@@ -160,8 +166,10 @@
 				9F1EB6FB28E63E7C0096E871 /* HighScoreModel.swift in Sources */,
 				9F1EB6F528E5ED970096E871 /* DiceModel.swift in Sources */,
 				9F1EB6E728E4CF540096E871 /* MainView.swift in Sources */,
+				9F1EB70128E645F80096E871 /* SingleScoreView.swift in Sources */,
 				9F1EB6F328E5EB520096E871 /* DiceView.swift in Sources */,
 				9F1EB6E528E4CF540096E871 /* High_RollerApp.swift in Sources */,
+				9F1EB6FF28E6458E0096E871 /* HighScoresView.swift in Sources */,
 				9F1EB6FD28E640110096E871 /* HighScoresVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
