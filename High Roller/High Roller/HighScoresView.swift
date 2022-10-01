@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct HighScoresView: View {
+    @ObservedObject var hsVM = HighScoreVM()
+    
     var body: some View {
-        VStack {
-            
+        ForEach(hsVM.scores) { score in
+            SingleScoreView(result: score)
         }
     }
 }

@@ -7,7 +7,8 @@
 
 import Foundation
 
-class Score: Codable {
+class Score: Identifiable, Codable {
+    let score: Int
     let numberOfDices: Int
     let numberOfSides: Int
     let snapshot: [Dice]
@@ -16,17 +17,14 @@ class Score: Codable {
     var snapshotString: String {
         snapshot.reduce("") { $0 + " \($1.value)" }
     }
-
-    var score: Int {
-        snapshot.reduce(0) { $0 + $1.value}
-    }
     
-    init(numberOfDices: Int, numberOfSides: Int, snapshot: [Dice]) {
+    init(score: Int, numberOfDices: Int, numberOfSides: Int, snapshot: [Dice]) {
+        self.score = score
         self.numberOfDices = numberOfDices
         self.numberOfSides = numberOfSides
         self.snapshot = snapshot
         self.time = Date.now
     }
     
-    static let example = Score(numberOfDices: 3, numberOfSides: 6, snapshot: [Dice(sides: 6), Dice(sides: 6), Dice(sides: 6)])
+    static let example = Score(score: 18, numberOfDices: 3, numberOfSides: 6, snapshot: [Dice(sides: 6), Dice(sides: 6), Dice(sides: 6)])
 }

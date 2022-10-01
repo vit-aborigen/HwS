@@ -21,6 +21,9 @@ struct MainView: View {
                 Stepper("Number of dices: \(numberOfDices)", value: $numberOfDices, in: 1...20)
                 Stepper("Number of sides: \(numberOfSides)", value: $numberOfSides, in: 1...20)
 
+                Text("Your score is \(appState.score)")
+                    .font(.headline)
+                
                 ScrollView {
                     LazyVGrid(columns: columns) {
                         ForEach(appState.dices, id: \.id) { dice in
@@ -28,14 +31,6 @@ struct MainView: View {
                         }
                     }
                 }
-
-                VStack {
-                    //Text("Your score is \(appState.returnSum())")
-                    //    .font(.headline)
-                    
-                    Text("High Score is")
-                }
-                
 
                 Spacer()
 
@@ -47,8 +42,10 @@ struct MainView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 15))
             }
             .toolbar {
-                Button {} label: {
-                    Text("High scores")
+                Button {
+                    
+                } label: {
+                    NavigationLink("High Scores", destination: HighScoresView())
                 }
             }
         }

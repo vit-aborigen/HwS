@@ -22,6 +22,10 @@ class AppState: ObservableObject {
         dices = []
     }
     
+    var score: Int {
+        dices.reduce(0) { $0 + $1.value}
+    }
+    
     private func generateDices() {
         for _ in 1...numberOfDices {
             dices.append(Dice(sides: numberOfSides))
