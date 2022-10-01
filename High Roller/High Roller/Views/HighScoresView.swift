@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HighScoresView: View {
-    @ObservedObject var hsVM = HighScoreVM()
+    var hsVM: HighScoreVM
     
     var body: some View {
         ForEach(hsVM.scores) { score in
@@ -19,6 +19,6 @@ struct HighScoresView: View {
 
 struct HighScoresView_Previews: PreviewProvider {
     static var previews: some View {
-        HighScoresView()
+        HighScoresView(hsVM: HighScoreVM())
     }
 }
