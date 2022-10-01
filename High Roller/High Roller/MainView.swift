@@ -12,6 +12,8 @@ struct MainView: View {
 
     @State private var numberOfDices = 1
     @State private var numberOfSides = 6
+    
+    let columns = [GridItem(.adaptive(minimum: 75))]
 
     var body: some View {
         NavigationView {
@@ -19,8 +21,8 @@ struct MainView: View {
                 Stepper("Number of dices: \(numberOfDices)", value: $numberOfDices, in: 1...20)
                 Stepper("Number of sides: \(numberOfSides)", value: $numberOfSides, in: 1...20)
 
-                ScrollView(.horizontal) {
-                    HStack {
+                ScrollView {
+                    LazyVGrid(columns: columns) {
                         ForEach(appState.dices, id: \.id) { dice in
                             DiceView(dice: dice)
                         }
