@@ -5,11 +5,14 @@
 //  Created by VITALI KAZLOU on 28.09.22.
 //
 
+import CoreHaptics
 import SwiftUI
 
 struct MainView: View {
     @ObservedObject var appState = AppState()
     @ObservedObject var hsVM = HighScoreVM()
+
+    @State private var engine: CHHapticEngine?
 
     @State private var numberOfDices = 1
     @State private var numberOfSides = 6
@@ -47,11 +50,12 @@ struct MainView: View {
                 .background(.yellow)
                 .clipShape(RoundedRectangle(cornerRadius: 15))
             }
+            .onAppear(perform: prepareHaptics)
             .onReceive(timer) { _ in
-                print(timerTick, maxDiceFlicksPossible)
                 if timerTick <= maxDiceFlicksPossible {
                     appState.reroll(dices: numberOfDices, sides: numberOfSides)
                     timerTick += 1
+                    buzzWhileRolling()
                 } else {
                     self.timer.upstream.connect().cancel()
                     hsVM.checkScores(newScore: appState.returnScore())
@@ -63,6 +67,20 @@ struct MainView: View {
                 }
             }
         }
+    }
+
+    func prepareHaptics() {
+        guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
+
+        do {
+            engine = try? CHHapticEngine()
+            try? engine?.start()
+        }
+    }
+
+    func buzzWhileRolling() {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
     }
 }
 
