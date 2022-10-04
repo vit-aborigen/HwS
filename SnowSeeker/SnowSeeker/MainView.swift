@@ -20,6 +20,8 @@ extension View {
 struct MainView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
     
+    @StateObject var favorites = Favorites()
+    
     @State private var searchText = ""
     var filteredResorts: [Resort] {
         if searchText.isEmpty {
@@ -51,6 +53,16 @@ struct MainView: View {
                         Text("\(resort.runs) runs")
                             .foregroundColor(.secondary)
                     }
+                    
+                    if favorites.contains(resort) {
+                        Spacer()
+                        
+                        Image(systemName: "star.fill")
+                            .font(.headline)
+                            .symbolRenderingMode(.palette)
+                            .foregroundColor(.red)
+                            .accessibilityLabel("This is a favorite resort")
+                    }
                 }
                 
             }
@@ -59,6 +71,7 @@ struct MainView: View {
             
             WelcomeView()
         }
+        .environmentObject(favorites)
     }
 }
 
