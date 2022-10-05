@@ -31,7 +31,5 @@ class Favorites: ObservableObject {
         save()
     }
     
-    func save() {
-        
-    }
+    func save() {}
 }

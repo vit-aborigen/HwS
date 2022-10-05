@@ -10,7 +10,7 @@ import SwiftUI
 extension View {
     @ViewBuilder func phoneOnlyNavView() -> some View {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            self.navigationViewStyle(.stack)
+            navigationViewStyle(.stack)
         } else {
             self
         }
@@ -23,6 +23,7 @@ struct MainView: View {
     @StateObject var favorites = Favorites()
     
     @State private var searchText = ""
+    
     var filteredResorts: [Resort] {
         if searchText.isEmpty {
             return resorts
@@ -64,7 +65,6 @@ struct MainView: View {
                             .accessibilityLabel("This is a favorite resort")
                     }
                 }
-                
             }
             .searchable(text: $searchText)
             .navigationTitle("Resorts")

@@ -19,7 +19,7 @@ struct Resort: Codable, Identifiable {
     let elevation: Int
     let runs: Int
     let facilities: [String]
-    
+
     var facilityImage: [Facility] {
         facilities.map(Facility.init)
     }
@@ -32,7 +32,7 @@ struct Resort: Codable, Identifiable {
         default: return "No info"
         }
     }
-    
+
     var priceString: String {
         switch price {
         case 1: return "$"

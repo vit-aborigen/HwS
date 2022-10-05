@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResortDetailsView: View {
     let resort: Resort
-    
+
     var body: some View {
         Group {
             VStack {

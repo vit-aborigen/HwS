@@ -26,7 +26,7 @@ struct ResortView: View {
                         .resizable()
                         .scaledToFit()
                     
-                    Text(resort.imageCredit)
+                    Text("by " + resort.imageCredit)
                         .font(.caption2)
                         .foregroundColor(.secondary)
                 }
@@ -87,7 +87,6 @@ struct ResortView: View {
         } message: { facility in
             Text(facility.description)
         }
-
     }
 }
 
