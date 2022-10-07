@@ -7,22 +7,25 @@
 
 import SwiftUI
 
-extension View {
-    @ViewBuilder func phoneOnlyNavView() -> some View {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            navigationViewStyle(.stack)
-        } else {
-            self
-        }
-    }
-}
-
 struct MainView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
     
     @StateObject var favorites = Favorites()
     
     @State private var searchText = ""
+    @State private var sortingType = SortType.name
+    @State private var showContextMenu = false
+    
+    var sortedResorts: [Resort] {
+        switch sortingType {
+        case .name:
+            return filteredResorts.sorted { $0.name < $1.name }
+        case .price:
+            return filteredResorts.sorted { $0.price < $1.price }
+        case .country:
+            return filteredResorts.sorted { $0.country < $1.country }
+        }
+    }
     
     var filteredResorts: [Resort] {
         if searchText.isEmpty {
@@ -33,7 +36,7 @@ struct MainView: View {
     
     var body: some View {
         NavigationView {
-            List(filteredResorts) { resort in
+            List(sortedResorts) { resort in
                 NavigationLink {
                     ResortView(resort: resort)
                 } label: {
@@ -68,6 +71,18 @@ struct MainView: View {
             }
             .searchable(text: $searchText)
             .navigationTitle("Resorts")
+            .toolbar {
+                Button {
+                    showContextMenu = true
+                } label: {
+                    Image(systemName: "arrow.up.arrow.down")
+                }
+            }
+            .confirmationDialog("Choose a filter", isPresented: $showContextMenu) {
+                Button("By name") { sortingType = .name }
+                Button("By price") { sortingType = .price}
+                Button("By country") { sortingType = .country}
+            }
             
             WelcomeView()
         }
