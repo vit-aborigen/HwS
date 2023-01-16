@@ -54,13 +54,19 @@ struct DimScreen: View {
     }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topLeading) {
             Color.black.opacity(0.8)
-
-            Rectangle()
-                .frame(width: hintSize.width, height: hintSize.height)
-                .offset(placeHintAt)
-                .blendMode(.destinationOut)
+            
+            VStack(spacing: 0) {
+                Rectangle()
+                    .frame(width: hintSize.width, height: hintSize.height)
+                    .blendMode(.destinationOut)
+                
+                Rectangle()
+                    .frame(width: hintSize.width, height: hintSize.height / 2)
+                    .foregroundColor(.white)
+            }
+            .offset(placeHintAt)
         }
         .compositingGroup()
     }
