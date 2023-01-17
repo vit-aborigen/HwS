@@ -62,6 +62,8 @@ struct DimScreen: View {
                     .frame(width: hintSize.width, height: hintSize.height)
                     .blendMode(.destinationOut)
                 
+                HintArrow()
+                
                 Rectangle()
                     .frame(width: hintSize.width, height: hintSize.height / 2)
                     .foregroundColor(.white)
@@ -69,6 +71,24 @@ struct DimScreen: View {
             .offset(placeHintAt)
         }
         .compositingGroup()
+    }
+}
+
+struct HintArrow: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let width = rect.size.width
+        let height = rect.size.height
+        path.move(to: CGPoint(x: 0.50563*width, y: height))
+        path.addLine(to: CGPoint(x: 0.99412*width, y: height))
+        path.addCurve(to: CGPoint(x: 0.89836*width, y: 0.91785*height), control1: CGPoint(x: 0.95475*width, y: height), control2: CGPoint(x: 0.91832*width, y: 0.96875*height))
+        path.addLine(to: CGPoint(x: 0.60139*width, y: 0.1608*height))
+        path.addCurve(to: CGPoint(x: 0.40986*width, y: 0.1608*height), control1: CGPoint(x: 0.55843*width, y: 0.05127*height), control2: CGPoint(x: 0.45283*width, y: 0.05127*height))
+        path.addLine(to: CGPoint(x: 0.1129*width, y: 0.91785*height))
+        path.addCurve(to: CGPoint(x: 0.01714*width, y: height), control1: CGPoint(x: 0.09294*width, y: 0.96875*height), control2: CGPoint(x: 0.0565*width, y: height))
+        path.addLine(to: CGPoint(x: 0.50563*width, y: height))
+        path.closeSubpath()
+        return path
     }
 }
 
