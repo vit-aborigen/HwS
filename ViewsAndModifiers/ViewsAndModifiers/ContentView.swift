@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    var isUserNewToBiorhythms = true
+    @State private var isUserNewToBiorhythms = true
     
     var body: some View {
         ZStack {
             CurrentScreen()
 
             if isUserNewToBiorhythms {
-                DimScreen(placeHintAt: CGSize(width: 50, height: 100), hintSize: CGSize(width: 100, height: 300))
+                DimScreen(placeHintAt: CGSize(width: 20, height: 100), hintSize: CGSize(width: 100, height: 300))
+                    .onTapGesture {
+                        isUserNewToBiorhythms = false
+                    }
             }
         }
     }
@@ -61,16 +64,35 @@ struct DimScreen: View {
                 Rectangle()
                     .frame(width: hintSize.width, height: hintSize.height)
                     .blendMode(.destinationOut)
+                    .padding(.bottom, 3)
                 
                 HintArrow()
-                
-                Rectangle()
-                    .frame(width: hintSize.width, height: hintSize.height / 2)
+                    .frame(width: 18, height: 13)
                     .foregroundColor(.white)
+                
+                BiorhythmOnboardingMessage()
+                    .frame(width: 358, height: 115)
             }
             .offset(placeHintAt)
         }
         .compositingGroup()
+    }
+}
+
+struct BiorhythmOnboardingMessage: View {
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12)
+                .foregroundColor(.white)
+            
+            VStack {
+                Text("Here you can scroll the chart and track changes for other days")
+                
+                Text("GOT IT")
+                    .font(.largeTitle)
+                    .foregroundColor(.purple)
+            }
+        }
     }
 }
 
